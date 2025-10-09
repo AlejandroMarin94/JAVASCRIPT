@@ -38,6 +38,39 @@
         let descriptionproduct= `${description} a un precio de ${PRICE} euros`;
         console.log ( descriptionproduct)
 
+        let x= 20
+        let y= x
+        
+
+        console.log(x); // 20 es el valor de x
+        console.log(y); // 20 es el valor de y, ya que al ser tipo primitivo se copia su valor
+        
+
+        //Por referencia
+        
+        let deporte1= {deporte: "futbol"};
+        let deporte2= deporte1;
+
+        deporte2.deporte= "tennis"
+    
+        console.log("deporte1", deporte1, "deporte2", deporte2);
+
+        let persona7= {name: "Alejandra"};
+        let persona5= {name: "maria"};
+        let persona4= {...persona7};
+
+
+        console.log( "persona5", persona5, "persona7", persona7, "persona4", persona4);
+
+
+        
+        let nameUser= "Alejandro"
+        let numberAge= 45
+        let country= "Spain"
+
+        console.log (`El compañero se llama ${nameUser} tiene ${numberAge} y es originario de ${country}`);
+
+
     </script>
 </body>
 </html>
