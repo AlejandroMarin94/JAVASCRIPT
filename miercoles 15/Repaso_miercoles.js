@@ -45,7 +45,7 @@ let ArrayTrid = [
 ]
 ];
 
-console.log(ArrayTrid[0][1][1]);
+console.log(ArrayTrid[0][1][2]);
 
 
 
@@ -54,16 +54,27 @@ console.log(ArrayTrid[0][1][1]);
 //Crea una función recursiva que cuente hacia atrás desde 5 hasta 1 y muestre los
 //números en consola.
 
-function RecursivaSimple (n){
-    if (n<0) return;
-
-    
+function RecursivaSimple(n){
+    if(n<1) return 1;
+    console.log(n);
+    RecursivaSimple(n-1);
 }
 
+
+
+RecursivaSimple(4);
 
 //5 5. Suma recursiva Define una función recursiva
 //  que calcule la suma de los números desde 1 hasta n 
 // (el valor n será pasado como parámetro).
+
+    function SumaRecursiva(n){
+        if (n<1) return 1;
+        return n +SumaRecursiva(n-1);
+
+    }
+    console.log(SumaRecursiva(5));
+
 
 
 
@@ -71,8 +82,13 @@ function RecursivaSimple (n){
  // que calcule el factorial de un número dado. 
  // Ejemplo: factorial(5) → 120.
 
- 
+ function factorial(n){
+    if(n<1) return 1;
+    return n* factorial(n-1);
 
+
+ }
+ console.log(factorial(5));
 
  // 7. Objeto básico Crea un objeto llamado persona
  //  con las propiedades nombre, edad y ciudad.
@@ -85,7 +101,24 @@ function RecursivaSimple (n){
  // persona un método saludar() que devuelva un 
  // mensaje con su nombre.
 
- 
+    persona= {
+        nombre: "Alejandro",
+        edad: 31,
+        ciudad:"Málaga",
+    }
+
+    console.log(persona.nombre);
+    persona["profesion"] = "desarrollador";
+    console.log(persona);
+    persona.edad= 12;
+    console.log(persona.edad);
+
+    persona.saludar= function(){
+        return `Hola, me llamo  ${this.nombre}`;
+    }
+
+    console.log(persona.saludar());
+
  
  
 
@@ -93,6 +126,9 @@ function RecursivaSimple (n){
  // persona con diferentes valores. Usando el array 
  // anterior, recorre todos los objetos y muestra 
  // el valor de cada propiedad nombre.
+
+  
+ 
 
 
 
