@@ -55,11 +55,8 @@ console.log(ArrayTrid[0][1][1]);
 //números en consola.
 
 function RecursivaSimple (n){
-    if (n<=5){
-        return n + RecursivaSimple -1;
-    }
+    if (n<0) return;
 
-        console.log(RecursivaSimple(5));
     
 }
 
