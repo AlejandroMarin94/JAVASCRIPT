@@ -1,3 +1,5 @@
+ /*
+ 
  //SUMAR NUMERO Y BOOLEANO USANDO CONVERSION EXPLICITA CON NUMBER
  
  let numero = "20"
@@ -101,10 +103,13 @@ if (number_1 === number_2){
     // Con bucle do while simulas que haces una accion 5 veces pero presentando tambien la opcion 0
 
     let cont= 0;
+*/
 
     do{
         console.log(cont);
         cont++;
         }
         while (cont<=5);
+
+        console.log(4);
     
