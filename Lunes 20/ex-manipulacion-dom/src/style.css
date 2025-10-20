@@ -9,11 +9,8 @@
 
 
 
-    .uno,
-    .dos,
-    .tres,
-    .cuatro{
-    background-color:  #3bd748;
+    .cuadrados {
+    background-color:  #3b78d7;
      width: 100px;
     height: 100px;
     }
