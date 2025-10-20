@@ -1,0 +1,33 @@
+.container-ppal{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+
+
+    .uno,
+    .dos,
+    .tres,
+    .cuatro{
+    background-color:  #3bd748;
+     width: 100px;
+    height: 100px;
+    }
+
+    .uno {
+        background-color: red;
+    }
+    .dos {
+        background-color: black;
+    }
+    .tres {
+        background-color: yellow;
+    }
+    .cuatro{
+        background-color: coral;
+    }
+    }
