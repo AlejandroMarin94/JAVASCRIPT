@@ -26,3 +26,29 @@
         background-color: coral;
     }
     }
+
+    #ex4 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #242424;
+  padding: 5px;
+  border-radius: 10px;
+  gap: 5px;
+  align-items: center;
+  color: white;
+}
+
+.movie-poster {
+  border-radius: 10px;
+}
+
+.movie-title {
+  text-align: center;
+  font-size: 1.2rem;
+}

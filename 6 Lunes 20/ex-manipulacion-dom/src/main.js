@@ -134,4 +134,4 @@ function movieCard(movie) {
 
 const divex4 = document.querySelector("#ex4");
 
-for (let i = 0; i <= 8; i++) divex4.appendChild(movieCard(movieDescription));
+for (let i = 1; i <= 8; i++) divex4.appendChild(movieCard(movieDescription));
