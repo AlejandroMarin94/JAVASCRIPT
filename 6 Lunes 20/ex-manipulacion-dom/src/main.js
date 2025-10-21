@@ -66,13 +66,13 @@ for (let i = 0; i < 4; i++) {
   const cuadrados = document.createElement("div");
   cuadrados.classList.add("cuadrados");
   if (i === 0) {
-     cuadrados.classList.add("uno");
+    cuadrados.classList.add("uno");
   } else if (i === 1) {
     cuadrados.classList.add("dos");
   } else if (i === 2) {
-     cuadrados.classList.add("tres");
+    cuadrados.classList.add("tres");
   } else {
-     cuadrados.classList.add("cuatro");
+    cuadrados.classList.add("cuatro");
   }
 
   containerPpal.appendChild(cuadrados);
@@ -91,3 +91,47 @@ containerex3.appendChild(containerPpal);
 // Javascript en el que utilices las propiedades
 //  y métodos vistos para el acceso y manipulación
 // del DOM.
+
+const movieDescription = {
+  title: "Frozen",
+  description: "Olaf es la caña",
+  poster:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbaU_RrbI58OsBmnEO8vwJU2tN81p5afC_eQ&s",
+};
+
+function createMovieTitle(title) {
+  const movieTitle = document.createElement("h3");
+  movieTitle.textContent = title;
+  movieTitle.classList.add("movie-title");
+  return movieTitle;
+}
+
+function createMovieDescription(description) {
+  const descriptionTitle = document.createElement("p");
+  descriptionTitle.textContent = description;
+  descriptionTitle.classList.add("movie-description");
+  return descriptionTitle;
+}
+
+function createPoster(imageUrl) {
+  const moviePoster = document.createElement("img");
+  moviePoster.setAttribute("src", imageUrl);
+  moviePoster.classList.add("movie-poster");
+  return moviePoster;
+}
+
+function movieCard(movie) {
+  const MovieCard = document.createElement("div"); // Crea un contenedor <div>
+  MovieCard.classList.add("movie-card"); // Le asigna una clase CSS para estilos
+
+  // Añade el título, descripción e imagen como hijos del contenedor
+  MovieCard.appendChild(createMovieTitle(movie.title));
+  MovieCard.appendChild(createMovieDescription(movie.description));
+  MovieCard.appendChild(createPoster(movie.poster));
+
+  return MovieCard; // Devuelve el <div> completo con todos los elementos dentro
+}
+
+const divex4 = document.querySelector("#ex4");
+
+for (let i = 0; i <= 8; i++) divex4.appendChild(movieCard(movieDescription));
