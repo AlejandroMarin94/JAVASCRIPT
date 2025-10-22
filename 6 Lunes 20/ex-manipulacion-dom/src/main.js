@@ -199,21 +199,135 @@ input7.addEventListener("input", ()=>{
 
 const ex8 = document.querySelector("#ex8");
 const div8 = document.createElement("div");
-const button22 = document.createElement("button22");
+const button22 = document.createElement("button");
+
 button22.textContent ="Clicks: 0"
-const contadorTexto = document.createElement("contador")
+
 div8.appendChild(button22);
 ex8.appendChild(div8);
-div8.appendChild(contadorTexto)
+
 let contador =0;
 
-button22.addEventListener("clicks",()=>{
+button22.addEventListener("click",()=>{
   contador++;
-  button22.textContent = contador;
-  console.log("hola");
+  button22.textContent = "Clicks: " + contador;
+  console.log("Premio al llegar a 1000");
   
 } );
 
 
+//## Ejercicio 9. Detectar tecla presionada Vamos a crear un event listener para el DOM, que nos
+//  mostrará por consola que tecla hemso pulsado. 
+// Nota: Usar el evento 'keydown' y extraer su valor con event.key.
+
+ const ex9= document.querySelector("#ex9");
+ const div9= document.createElement("div");
+ div9.classList.add("div9");
+
+ ex9.appendChild(div9);
+
+ document.addEventListener("keydown",(event)=>{
+  console.log("Tecla presionada : " + event.key);
+  
+ })
 
 
+ //10 ## Ejercicio 10. Animar un cuadrado Hacer que un cuadrado se mueva hacia la 
+ // derecha 100px y luego vuelva a su posición original Nota: Usar requestAnimationFrame y 
+ // cambiar sentido multiplicando translateX por -1 cuando sea necesario.
+
+ const ex10 = document.querySelector("#ex10");
+ const div10 = document.createElement("div");
+ div10.classList.add("cuadrado10");
+ const div11 = document.createElement("div");
+ 
+
+ ex10.appendChild(div10);
+ ex10.appendChild(div11);
+
+ const button33= document.createElement("button");
+ button33.classList.add("boton-cuadrado");
+
+ div11.appendChild(button33);
+
+
+function animarElemento(elemento, tiempoInicio, direccion) {
+  let tiempoActual = performance.now(); 
+  // Tiempo actual en milisegundos
+
+  let progreso = (tiempoActual - tiempoInicio) / 1000; 
+  // Tiempo transcurrido en segundos
+
+  if (progreso < 1) {
+    let desplazamiento = progreso * 100 * direccion; 
+    // Calcula cuánto debe moverse, multiplicando por dirección (1 o -1)
+
+    elemento.style.transform = `translateX(${desplazamiento}px)`; 
+    // Aplica el movimiento al estilo
+
+    requestAnimationFrame(() => animarElemento(elemento, tiempoInicio, direccion)); 
+    // Sigue animando en el mismo sentido
+  } else {
+    elemento.style.transform = `translateX(${1 * direccion}px)`; 
+    // Asegura que termine en la posición final
+
+    if (direccion === 1) {
+      // Si fue hacia la derecha, espera un poco y vuelve
+      setTimeout(() => {
+        requestAnimationFrame(() => animarElemento(elemento, performance.now()));
+      }, 300); // Pausa de 300ms antes de volver
+    }
+  }
+}
+
+// ⏱️ Inicia la animación hacia la derecha
+button33.addEventListener("click", ()=>{
+requestAnimationFrame(() => animarElemento(div10, performance.now(), 1));
+
+})
+
+
+//Ejercicio 11. Cambio de color en el click de ratón Teniendo un div con un
+//  background color azul, hacer que cambie a rojo en el click, y si se 
+// vuelve a pulsar, de nuevo azul y así sucesivamente. 
+// Nota: Es de tipo transicion
+
+const ex11 = document.getElementById("ex11");
+const div111 = document.createElement("div");
+div111.classList.add("div111");
+
+ex11.appendChild(div111);
+
+
+div111.addEventListener("click", ()=>{
+  if(div111.style.backgroundColor==="blue"){
+    div111.style.backgroundColor="red";
+  } else{
+    div111.style.backgroundColor = "blue";
+  }
+})
+
+
+//# Ejercicio 12. Rotar un elemento Rotar un 
+// elemento creado 360º. 
+// Nota: Usar requestAnimationFrame.
+
+
+const ex12 = document.querySelector("#ex12");
+
+const rotado = document.createElement("div");
+rotado.classList.add("rotado");
+
+ex12.appendChild(rotado);
+
+let rotacion= false;
+
+rotado.addEventListener("click",()=>{
+  rotacion=!rotacion
+  if(rotacion){
+    rotado.style.transform="rotate(180deg)";
+
+  } else{
+    rotado.style.transform= "rotate(0deg)";
+  }
+});
