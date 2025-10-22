@@ -135,3 +135,83 @@ function movieCard(movie) {
 const divex4 = document.querySelector("#ex4");
 
 for (let i = 1; i <= 8; i++) divex4.appendChild(movieCard(movieDescription));
+
+
+//5 Tras crear un shadow DOM con un <p>Into Shadow</p> dentro de el,
+//  usa shadow.querySelector('p') y cambia su textContent. 
+// Tenemos que modificar un <> que está dentro del shadow para que 
+// ponga “Hola desde el Shadow DOM”. 
+// Resultado: el texto del p encapsulado debe ser rojo y 
+// cambiar a “Hola desde el Shadow DOM”. 
+// Nota: Debe estar en open.
+
+
+
+//6 ## Ejercicio 6. Mostrar coordenadas del ratón en tiempo real Vamos 
+// a mover el ratón por encima de un div que creemos que tendrá de 
+// clase "container-mouse-move" y con un tamaño de 300px x 200px y 
+// border 1px solid grey. Necesitamos mostrar por consola los valores 
+// de clientX / clientY mediante javascript. Nota:Usar un event listener
+//  con 'mousemove' para conseguirlo y extraer esas propiedades del event.
+// Resultado: la consola va mostrando coordenadas al mover el ratón por 
+// el container.
+
+
+const ex6 = document.querySelector("#ex6");
+const div6 = document.createElement("div");
+ex6.appendChild(div6);
+
+div6.classList.add("container-mouse-move");
+div6.textContent = "Hola soy un div";
+div6.addEventListener("mousemove",(a)=>{
+  console.log(("Coordenada X" + a.clientX), ("Coordenada Y" + a.clientY));
+  
+});
+
+
+//7 ## Ejercicio 7. Extreer valor de un input 
+// Vamos a definir por javascript un input, con id="input-test" 
+// y lo agregaremos al DOM Luego crearemos un event listener 
+// del tipo 'input' y vmoa s mostrar por consola el valor actual
+//  de ese input cuando tecleemos dentro. 
+// Nota: Para extraer el valor usaremos input.value
+
+const ex7 = document.querySelector("#ex7");
+const div7= document.createElement("div");
+const input7 = document.createElement("input");
+input7.setAttribute("id", "input-test");
+div7.appendChild(input7);
+ex7.appendChild(div7);
+
+input7.addEventListener("input", ()=>{
+  console.log(input7.value);
+  
+})
+  
+
+//## Ejercicio 8. Creando un contador de clicks
+
+//Vamos a definir un boton, con el texto inicial "Clicks: 0" y 
+// lo agregaremos al DOM. Crearemos un event listener que cada vez 
+// que hagamos click, incremente ese numero mostrado. 
+// EJ: Clicks: 1, Clicks: 2, y así sucesivamente. 
+// Opcional: Crear tambien un botn para resetear el contador.
+
+const ex8 = document.querySelector("#ex8");
+const div8 = document.createElement("div");
+const button22 = document.createElement("button22");
+button22.textContent ="Clicks: 0"
+const contadorTexto = document.createElement("contador")
+div8.appendChild(button22);
+ex8.appendChild(div8);
+div8.appendChild(contadorTexto)
+let contador =0;
+
+button22.addEventListener("clicks",()=>{
+  contador++;
+  contadorTexto.textContent = contador;
+} );
+
+
+
+

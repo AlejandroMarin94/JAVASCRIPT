@@ -1,51 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex-manipulacion-dom</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ex-manipulacion-dom</title>
-</head>
+  <body>
+    <div id="app">
+      <div class="ex1">
+        <p id="firstid"></p>
 
-<body>
-  <div id="app">
-    <div class="ex1">
+        <div class="firstclass">HOLA</div>
+        <h2 class="firstclass">QUE</h2>
+        <p class="firstclass">TAL</p>
+      </div>
 
-      <p id="firstid"></p>
+      <div class="ex2"></div>
 
-      <div class="firstclass">HOLA</div>
-      <h2 class="firstclass">QUE</h2>
-      <p class="firstclass">TAL</p>
-    </div>
-
-    <div class="ex2">
-      
-
-    </div>
-
-    <div class="ex3">
-      <!--
+      <div class="ex3">
+        <!--
       <div class="container-ppal">
         <div class="container cuadrados uno"></div>
         <div class="container cuadrados dos"></div>
         <div class="container cuadrados tres"></div>
         <div class="container cuadrados cuatro"></div>
       </div>
-      -->
-      
+      --></div>
+      <div id="ex4"></div>
 
+      <div id="shadow"></div>
+      <script>
 
+        let shadowHost = document.querySelector("#shadow")
+        let shadowRoot = shadowHost.attachShadow({mode: "open"});
+        
 
+        shadowRoot.innerHTML = `
+        <style>
+          p {
+          color: red;
+          }
+          </style>
+          <p> Into shadow </p>`
+          
+         
+        const p = shadowRoot.querySelector("p");
+        p.textContent = "Hola desde el shadow";
+
+        
+
+        
+
+      </script>
+      <div id="ex6"></div>
+      <div id="ex7"></div>
+      <div id="ex8"></div>
     </div>
-    <div id="ex4">
+    
 
-
-
-    </div>
-  </div>
-
-  <script type="module" src="/src/main.js"></script>
-</body>
-
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

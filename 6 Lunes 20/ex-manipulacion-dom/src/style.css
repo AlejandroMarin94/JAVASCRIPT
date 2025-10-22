@@ -52,3 +52,41 @@
   text-align: center;
   font-size: 1.2rem;
 }
+
+p{
+  color: red;
+}
+
+
+.container-mouse-move{
+  height: 300px;
+  width: 200px;
+  border: 1px solid grey;
+
+
+}
+
+button22 {
+  background-color: #4CAF50; /* Verde */
+  color: white;              /* Texto blanco */
+  border: none;              /* Sin borde */
+  padding: 12px 24px;        /* Espaciado interno */
+  text-align: center;        /* Centra el texto */
+  text-decoration: none;     /* Sin subrayado */
+  display: inline-block;     
+  font-size: 16px;           
+  font-weight: 600;
+  border-radius: 8px;        /* Bordes redondeados */
+  cursor: pointer;           /* Mano al pasar el mouse */
+  transition: all 0.3s ease; /* Animación suave */
+}
+
+button22:hover {
+  background-color: #45a049; /* Un verde un poco más oscuro */
+  transform: scale(1.05);    /* Efecto de agrandarse al pasar el mouse */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra */
+}
+
+button22:active {
+  transform: scale(0.98);    /* Pequeño efecto al presionar */
+}
