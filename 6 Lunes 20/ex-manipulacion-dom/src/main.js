@@ -209,7 +209,9 @@ let contador =0;
 
 button22.addEventListener("clicks",()=>{
   contador++;
-  contadorTexto.textContent = contador;
+  button22.textContent = contador;
+  console.log("hola");
+  
 } );
 
 
