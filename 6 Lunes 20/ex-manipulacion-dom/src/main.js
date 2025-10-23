@@ -331,3 +331,47 @@ rotado.addEventListener("click",()=>{
     rotado.style.transform= "rotate(0deg)";
   }
 });
+
+// 13
+
+const zonaParaDrop = document.createElement("div");
+zonaParaDrop.className = "demo-drag";
+zonaParaDrop.textContent = "Sueltas el dragable aqui"
+
+const elementoDragable= document.createElement("div");
+elementoDragable.className ="demo-drop";
+elementoDragable.textContent = "Arrastrame";
+elementoDragable.draggable = true;
+
+ex13.appendChild(elementoDragable);
+ex13.appendChild(zonaParaDrop);
+
+const pelicula = {
+  nombre: "Hercules",
+  año: 1994,
+  categoria : "infantil",
+
+}
+
+elementoDragable.addEventListener("dragstart",(event)=>{
+  event.dataTransfer.setData("sendData", JSON.stringify(pelicula));
+  console.log("lanzado dragstart");
+  
+})
+zonaParaDrop.addEventListener("dragover", (event)=>{
+  event.preventDefault();
+})
+
+zonaParaDrop.addEventListener("drop", (event)=>{
+  event.preventDefault();
+  const datosPelicula = JSON.parse(event.dataTransfer.getData("sendData"));
+  zonaParaDrop.textContent="";
+  
+  Object.values(datosPelicula).forEach((elem)=>{
+    zonaParaDrop.textContent+= `${elem}, `
+    
+    
+  });
+
+  
+})
