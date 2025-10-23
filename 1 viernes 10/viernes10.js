@@ -104,12 +104,16 @@ if (number_1 === number_2){
 
     let cont= 0;
 */
-
+let cont =0;
     do{
         console.log(cont);
         cont++;
         }
         while (cont<=5);
 
-        console.log(4);
+        console.log(10);
+        
+        
+
+       
     

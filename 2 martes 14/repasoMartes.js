@@ -7,13 +7,14 @@
 //Luego intenta mostrar dicha variable
 //tema fuera de la función (¿qué ocurre y p
 
-let curso= "JS Básico";
+let curso = "JS Básico";
 
 function mostrar(){
     let tema = "Funciones"
+    console.log(`Curso: ${curso} Tema: ${tema}`);
+    
 }
-console.log(curso);
-console.log(mostrar());
+mostrar()
 
 
 
@@ -23,12 +24,17 @@ console.log(mostrar());
 //2.2// Crea una función que reciba
 //  un nombre y devuelva un saludo que lo incluya.
 
-
-function saludo(name){
-    let nombrecito = "Hola que tal estás " + name;
-    return nombrecito;
+function saludar(name){
+    console.log(`Hola como estás ${name}`);
+    
 }
-console.log(saludo("Alejandro"));
+saludar("Alejandro");
+   
+    
+
+
+
+
 
 
 //2.3 Escribe una función llamada sumar(a, b)
@@ -36,12 +42,12 @@ console.log(saludo("Alejandro"));
 //  Guarda el resultado en una variable
 //  y muéstralo por consola.
 
-function sumar(a,b){
-    let operacion = a+b;
-    return operacion
-}
-console.log(sumar(3,3))
+let Suma = (a,b) => {return a+b}
+    
+    
 
+
+console.log(Suma(3,2));
 
 
 
@@ -52,14 +58,15 @@ console.log(sumar(3,3))
 //  que combine ambas y muéstralo
 //  por consola.
 
-let variable1 = "curso"
+let cursillo= "Programacion"
 function mostrarCurso(){
-    let variable2 = "tema";
-    let  combinado = variable1+ "-" + variable2;
-    return combinado
-}
-console.log(mostrarCurso());
+let tema ="CSS"
+return `El curso es ${cursillo} y el tema que toca es ${tema}`;
 
+
+}
+
+console.log(mostrarCurso());
 
 
 //2.5 Escribe una función llamada
@@ -68,12 +75,12 @@ console.log(mostrarCurso());
 //  Guarda el resultado en una
 //  variable y muéstralo por consola.
 
-function multiplicar(a,b){
-    let producto = a*b;
-    return producto
-
+let resultadoFunction=(a,b)=>{
+    return a*b
 }
-console.log(multiplicar(3,2));
+
+console.log(resultadoFunction(5,5));
+
 
 
 
@@ -86,11 +93,13 @@ console.log(multiplicar(3,2));
 //  Guarda el retorno y muéstralo
 //  por consola.
 
-function presentar(nombre, edad){
-    let presentacion= `Me llamo ${nombre} y tengo ${edad} años`;
-    return presentacion
+function presentar(nombre,edad){
+    return `Me llamo ${nombre} y tengo ${edad} años`;
 }
 console.log(presentar("Alejandro",31));
+
+
+
 
 
 //3 Declara una constante miLogger
@@ -99,34 +108,26 @@ console.log(presentar("Alejandro",31));
 // con el prefijo LOG:.
 // Llama a miLogger('probando').
 
-const miLogger = function(probando){
-    let mensajito1 = "LOG " + probando;
-    return mensajito1;
-    
-}
-console.log(miLogger("probando"));
+const miLogger =(mensaje)=> console.log("LOG: " + mensaje);
 
-const miApellido= (nombre)=> console.log("Hola me llamo " + nombre);
-
-
-console.log(miApellido("Alejandro"));
-
-
+miLogger("probando")
 
 
 //4 Crea una función flecha esPar(n) que
 //  devuelva true si n es par y false si no.
 // Pruébala con 3 y 10.
 
-function esPar(n){
-    let Siono = n %2 ===0;
-    return Siono
-    
+const esPar =(n)=>{
+     if(n%2===0){
+        return true;
+    } else{ 
+        return false;
+    }
 }
-console.log(esPar(4));
+console.log(esPar(11));
 
-const esPare = (n)=>n %2===0;
-console.log(esPare(3))
+
+
 
 
 //5 Crea un array llamado frutas,
@@ -135,13 +136,12 @@ console.log(esPare(3))
 //• Cambia el último por 'mango'.
 //• Muestra el array final.
 
-let frutas = ["aguacate", "uva", "albaricoque"]
+const frutas =["aguacate", "uva", "albaricoque"];
 console.log(frutas[0]);
 console.log(frutas[frutas.length-1]);
-console.log(frutas[frutas.length-1]= "mango");
-console.log(frutas);
 
-;
+frutas[2]="mango";
+console.log(frutas);
 
 //6 push / pop / unshift / shift
 // Partiendo de la variable llamada cola, y cuyo valor es [],
@@ -151,17 +151,16 @@ console.log(frutas);
 // Atiende a la primera persona que llegó (elimínala y muestra su nombre).
 // Muestra el estado final.
 
-let cola =[]
+let cola= [];
 cola.push("Ana");
 cola.push("Pepe");
+console.log(cola);
 cola.unshift("Luisa");
+console.log(cola);
+const primeraPersonaAtendida=cola.shift();
+console.log(`${primeraPersonaAtendida} la primera persona de la lista ha sido atendida`);
 
 console.log(cola);
-
-const AtenderPrimeraPersona = cola.shift();
-console.log("Primera persona atendida", AtenderPrimeraPersona);
-
-console.log(cola)
 
 
 //7 forEach / indexOf 
@@ -170,12 +169,16 @@ console.log(cola)
 //• Muestra el primer índice donde aparece 'base'
 //  y el índice si no se encuentra 'yuxta'
 
-const items= ["altura", "base", "cuadrado", "bisectriz"];
-items.forEach((valor,  indice)=>{
-    console.log("Valor e indice", valor, indice);
-})
+const items = ['altura','base','cuadrado','bisectriz'];
+items.forEach((elem, idx)=>{
+    console.log(elem, idx);
+    
+}
+)
 
-console.log("Primer indice donde aparece base", items.indexOf("base"))
+    console.log("Primer indice donde aparece base: " + items.indexOf("base"));
+    console.log("Primer indice donde aparece yuxta: " + items.indexOf("yuxta"));
+    
 
 //8 Con la variable llamada letras,
 //  y cuyo valor es ['a','b','c','d']:
@@ -184,10 +187,24 @@ console.log("Primer indice donde aparece base", items.indexOf("base"))
 // Muestra una copia de las 3 ultimas
 //  posiciones.
 
+let letras = ['a','b','c','d'];
+console.log(letras.slice(0,2));
+console.log(letras.slice(-3));
+
+
+
+
 
 
 //9 Une [1,2] con [3,4] usando concat
 //  y confirma que los originales no cambian.
+
+let aa= [1,2];
+let bb= [3,4];
+
+let aabb= aa.concat(bb);
+console.log(aabb);
+
 
 
 
@@ -196,12 +213,24 @@ console.log("Primer indice donde aparece base", items.indexOf("base"))
 //• ¿Todos son mayores que 0? (every)
 //• ¿El array contiene el 8? (includes)
 
+const numeros = [2,5,8,12];
+
+console.log(numeros.some(n=>n>10));
+console.log(numeros.every(n=>n>1));
+console.log(numeros.includes(8));
+
 
 
 //11 Con const llamada cod, y cuyo valor sea [9,8,7]:
 // Crea una copia invertida (sin modificar el original) y muéstrala.
 // Une el original con guiones - en un string.
 
+const cod = [9,8,7];
+const codReverse= cod.reverse([...cod]);
+console.log(codReverse);
+
+const Unidos = cod.join("-");
+console.log(Unidos);
 
 
 
@@ -209,16 +238,41 @@ console.log("Primer indice donde aparece base", items.indexOf("base"))
 //  crea un nuevo array con los cuadrados de
 //cada número.
 
+const base = [1,2,3];
+
+const newArray = base.map((elem)=>elem*2);
+
+
+
+console.log(newArray);
+
+
 
 
 //13 Con const llamada pagos, y cuyo valor es [10, 20, 5],
 //  calcula el total acumulado.
+
+const pagos = [10, 20, 5]
+let suma =0;
+pagosTotal = pagos.reduce((acc,elem)=>acc+elem,0);
+
+
+console.log(pagosTotal);
 
 
 
 14// Ordena numéricamente let, llamadadesorden,
 //  y cuyo valor es [10, 2, 1, 20] en ascendente y
 // luego en descendente.
+
+let desorden = [10, 2, 1, 20];
+
+let desordenador= desorden.sort((a,b)=>a-b);
+console.log(desordenador);
+
+let ordenar= desorden.sort((a,b)=>b-a);
+console.log(ordenar);
+
 
 
 
