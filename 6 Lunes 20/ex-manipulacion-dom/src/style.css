@@ -157,3 +157,53 @@ button:active {
   
   
 }
+
+.button-Contador{
+background-color: #4CAF50; /* Verde */
+  color: white;              /* Texto blanco */
+  border: none;              /* Sin borde */
+  padding: 12px 24px;        /* Espaciado interno */
+  text-align: center;        /* Centra el texto */
+  text-decoration: none;     /* Sin subrayado */
+  display: inline-block;     
+  font-size: 16px;           
+  font-weight: 600;
+  border-radius: 8px;        /* Bordes redondeados */
+  cursor: pointer;           /* Mano al pasar el mouse */
+  transition: all 0.3s ease; /
+
+}
+
+
+.button-setInterval{
+background-color: #15135e; /* Verde */
+  color: white;              /* Texto blanco */
+  border: none;              /* Sin borde */
+  padding: 12px 24px;        /* Espaciado interno */
+  text-align: center;        /* Centra el texto */
+  text-decoration: none;     /* Sin subrayado */
+  display: inline-block;     
+  font-size: 16px;           
+  font-weight: 600;
+  border-radius: 8px;        /* Bordes redondeados */
+  cursor: pointer;           /* Mano al pasar el mouse */
+  transition: all 0.3s ease;
+  gap: 15px; /
+
+}
+
+.button-clearInterval{
+background-color: #86131d; /* Verde */
+  color: white;              /* Texto blanco */
+  border: none;              /* Sin borde */
+  padding: 12px 24px;        /* Espaciado interno */
+  text-align: center;        /* Centra el texto */
+  text-decoration: none;     /* Sin subrayado */
+  display: inline-block;     
+  font-size: 16px;           
+  font-weight: 600;
+  border-radius: 8px;        /* Bordes redondeados */
+  cursor: pointer;           /* Mano al pasar el mouse */
+  transition: all 0.3s ease; /
+
+}

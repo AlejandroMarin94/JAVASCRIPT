@@ -332,7 +332,9 @@ rotado.addEventListener("click",()=>{
   }
 });
 
-// 13
+// 13 // ## Ejercicio 13. Arrastrar un elemento encima de otro y volcar datos Crea dos divs, 
+// teniendo en cuenta que uno deberás arrastrarlo encima del otro pasandole un opjeto que 
+// previamente tengas definido, y vuenca su contenido en el textContent del segundo elemento.
 
 const zonaParaDrop = document.createElement("div");
 zonaParaDrop.className = "demo-drag";
@@ -375,3 +377,89 @@ zonaParaDrop.addEventListener("drop", (event)=>{
 
   
 })
+
+
+// ## Ejercicio 14 — Scope local y global Declara variables con var, let y const en 
+// distintos ámbitos (global, función, bloque) y muestra por consola dónde son accesibles.
+
+
+let globalVar = "Variable global";
+
+function globalAll(){
+  console.log(globalVar);
+  
+}
+globalAll();
+console.log(globalVar);
+
+
+/*function dentroDelaFuncion(){
+    let dentroFuncion= "Adios";
+    console.log(dentroFuncion);
+    
+}
+dentroDelaFuncion();
+console.log(dentroFuncion); // dentroFuncion is not defined;
+*/
+// ## Ejercicio 15 — setTimeout Crea un mensaje 
+// que se muestre en #app 3 segundos después de 
+// pulsar un botón.
+
+
+const buttonContador = document.createElement("button");
+buttonContador.className = "button-Contador";
+buttonContador.textContent = "Pulsar aquí";
+const parrafoElemet = document.createElement("p");
+parrafoElemet.textContent = "Esperando mensaje";
+
+
+ex15.appendChild(buttonContador);
+ex15.appendChild(parrafoElemet);
+buttonContador.addEventListener("click", ()=>{
+  setTimeout(()=>{
+  parrafoElemet.textContent="Mensaje mostrado al pasar 3 segundos";
+}, 3000);
+});
+
+
+
+// 16 ## Ejercicio 16 — setInterval y clearInterval Crea un contador 
+// que aumente cada segundo y un botón que lo detenga 
+// cuando se pulse y otro para resetearlo a 0.
+
+
+const buttonsetInterval = document.createElement("button");
+buttonsetInterval.className = "button-setInterval";
+buttonsetInterval.textContent = "Pulsar aquí para empezar contador";
+
+const buttonclearInterval = document.createElement("button");
+buttonclearInterval.className = "button-clearInterval";
+buttonclearInterval.textContent = "Pulsar aquí para resetear contador";
+
+const contadorDisplay = document.createElement("div");
+contadorDisplay.className = "contador-display";
+contadorDisplay.textContent = "0";
+
+ex16.appendChild(buttonsetInterval);
+ex16.appendChild(buttonclearInterval);
+ex16.appendChild(contadorDisplay);
+
+let contador10 =0;
+let intervalo = null;
+
+buttonsetInterval.addEventListener("click", ()=>{
+  if(!intervalo){
+    intervalo = setInterval(()=>{
+      contador10++;
+      contadorDisplay.textContent = contador10;
+    }, 1000);
+  }
+})
+
+buttonclearInterval.addEventListener("click", () => {
+  clearInterval(intervalo);
+  intervalo = null;
+  contador = 0;
+  contadorDisplay.textContent = contador;
+});
+
