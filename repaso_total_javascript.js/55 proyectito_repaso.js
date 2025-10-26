@@ -5,23 +5,6 @@
 // Cada objeto representará un producto 
 // y debe tener las propiedades: nombre, precio, stock.
 
-const inventario= [
-    {
-        nombre: "Tele",
-        precio: 1000,
-        stock: 300,
-    },
-    {
-        nombre: "ordenador",
-        precio: 500,
-        stock: 50,
-    },
-    {
-        nombre: "consola",
-        precio: 299,
-        stock: 8,
-    }
-]
 
 2// Recorre el array productos con un bucle
 //  y muestra cada producto formateado así: 
