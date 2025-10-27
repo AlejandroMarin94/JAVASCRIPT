@@ -463,3 +463,355 @@ buttonclearInterval.addEventListener("click", () => {
   contadorDisplay.textContent = contador;
 });
 
+
+
+// 19 haz una peticion fetch() a una API publica ( por ejemplo
+// https://jsonplaceholder.typicode.com/user y muestra los nombres en una lista)
+
+
+
+const container = document.getElementById("ex19");
+
+
+const title = document.createElement("h2");
+title.textContent = "Lista de Usuarios";
+container.appendChild(title);
+
+const ul = document.createElement("ul");
+container.appendChild(ul);
+
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(users => {
+    users.forEach(user => {
+      const li = document.createElement('li');
+      li.textContent = user.name;
+      ul.appendChild(li);
+    });
+  })
+  .catch(error => {
+    const errorMsg = document.createElement('p');
+    errorMsg.textContent = 'Error al cargar los usuarios.';
+    errorMsg.style.color = 'red';
+    container.appendChild(errorMsg);
+    console.error('Error en la petición fetch:', error);
+  });
+  
+
+  //20 simula una peticion a una url erronea y muestra en consola 
+  // el mensaje de error con el codigo de estado.
+
+
+  /*
+  fetch('https://jsonplaceholder.typicode.com/usuarios') 
+  .then(response => {
+    if (!response.ok) {
+      
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Datos recibidos:", data);
+  })
+  .catch(error => {
+    console.error("Falló la petición:", error.message);
+  });
+*/
+
+ fetch('https://jsonplaceholder.typicode.com/usuarios')
+ .then(response=>{
+  if(!response.ok){
+    throw new Error(`Error ${response.status} : ${response.statusText}`)
+    
+  }
+  return responde.json();
+ })
+ .then(data=>{
+  console.log("Datos recibidos", data);
+  
+ })
+ .catch(error=>{
+  console.error("Error en algun sitio", error.message)
+ })
+
+  //21 Envía un objeto JSON a una API ( como https://jsonplaceholder.typicode.com/posts)
+  // y muestra la respuesta recibida.
+
+  const nuevoPost = {
+    title: "Hola que tal",
+    body: "Estamos haciendo pruebas",
+    userId: 1
+  }
+/*
+  fetch ("https://jsonplaceholder.typicode.com/posts",{
+    method: "Post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(nuevoPost)
+
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Respuesta recibida del servidor:', data);
+  })
+  .catch(error => {
+    console.error('Error al enviar el JSON:', error.message);
+  });
+  */
+
+  fetch("https://jsonplaceholder.typicode.com/posts",{
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(nuevoPost)
+  })
+
+  .then(response=>{
+    if(!response.ok){
+      throw new Error(`Error ${response.status}: ${response.statusText}`)
+    }
+    return response.json();
+  })
+  .then(data=>{
+    console.log("datos recibidos con exito", data)
+  })
+
+  .catch(error=>{
+    console.error("Error al enviar el JSON", error.message)
+  });
+
+  // ## Ejercicio 22 - fetch PUT simulado Reemplaza completamente
+  //  el post con id: 1 en la misma API usando el método PUT,
+  // enviando un nuevo title y body.
+
+  const nuevoPostActualizado = {
+    id: 1,
+    title: "Hola como estabas",
+    body: "Ya hemos terminado las pruebas",
+    userId: 1
+  }
+
+  fetch("https://jsonplaceholder.typicode.com/posts/1",{
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(nuevoPostActualizado)
+  })
+  .then(response=>{
+    if(!response.ok){
+      throw new Error(`Error${response.status}, ${response.statusText}` )
+    }
+    return response.json()
+  })
+  .then(data=>{
+    console.log("Los datos han sido modificados", data);
+    
+  })
+  .catch(error=>{
+    console.error("Error al recibir los datos", error.message);
+  })
+
+
+ // ## Ejercicio 23 - fetch  PATCH Modifica solo el título 
+ // (title) del post con id: 1 usando el método PATCH.
+
+ const cambioTitulo= {
+  title: "Nuevo titulo con PATCH"
+ }
+
+ fetch("https://jsonplaceholder.typicode.com/posts/1",{
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(cambioTitulo)
+})
+ .then(response=>{
+  if(!response.ok){
+    throw new Error (`Error en los datos recibidos ${response.status}${response.statusText}`)
+  }
+  return response.json()
+
+  .then(data=>{
+    console.log("Datos recibidos con exito", data);
+    
+  })
+  
+  .catch(error=>{
+    console.error("Error en los datos recibidos", error.message)
+  })
+ })
+
+
+ //24 ## Ejercicio 24 - fetch DELETE Elimina el post 
+ // con id: 1 usando el método DELETE y muestra un 
+ // mensaje en consola confirmando la eliminación.
+
+ fetch("https://jsonplaceholder.typicode.com/posts/1",{
+method: "DELETE"
+ }
+
+ )
+ .then(response=>{
+  if(!response.ok){
+    throw new Error(`Error ${response.status}${response.statusText}`)
+  }
+ console.log("Post eliminado con exito");
+
+  })
+  .catch(error=>{
+    console.error("Error al eliminar el post", error.message);
+  });
+  
+ 
+
+  ////////// ASYNC////////////
+
+// # Ejercicio 19 — fetch GET básico 
+// Haz una petición fetch() a una API pública 
+// (por ejemplo, https://jsonplaceholder.typicode.com/users)
+// y muestra los nombres en una lista.
+
+const container10 = document.getElementById("ex20");
+
+  const title10 = document.createElement("h2");
+  title10.textContent = "Lista de Usuarios";
+  container10.appendChild(title10);
+
+  const ul10 = document.createElement("ul");
+  container10.appendChild(ul10);
+
+async function mostrarUsarios() {
+  try{
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    if(!response.ok){
+      throw new Error(`Error${response.status}${response.statusText}`)
+    }
+    const users = await response.json();
+
+    users.forEach(user=>{
+      const li = document.createElement("li");
+      li.textContent = user.name;
+      ul10.appendChild(li)
+    });
+  } catch(error){
+    const errorMSG = document.createElement("p");
+    errorMSG.textContent = "Error al cargar los usuarios";
+    errorMSG.style.color = "red";
+    container10.appendChild(errorMSG);
+    console.error("Error", error.message);
+  }
+  
+}
+mostrarUsarios();
+
+
+
+//## Ejercicio 20 — Manejo de errores con fetch Simula una petición 
+// a una URL errónea y muestra en consola el mensaje de error 
+// con el código de estado.
+
+async function simularErrorFetch(){
+  try{
+    const response = await fetch("https://jsonplaceholder.typicode.com/usuarios");
+    if(!response.ok){
+      throw new Error(`Error ${response.status}${response.statusText}`)
+    }
+    const data = await response.json();
+    console.log("Datos recibidos con exito", data);
+    
+  }
+  catch(error){
+    console.error("Error en la peticion", error.message)
+  }
+}
+simularErrorFetch();
+
+
+  //21 Envía un objeto JSON a una API ( como https://jsonplaceholder.typicode.com/posts)
+  // y muestra la respuesta recibida.
+
+  const nuevoPostAsync = {
+    title: "Estamos usando funciones async",
+    body: "Ha llegado esta funcion async",
+    userId: 2
+  }
+
+   async function enviandoUnObjeto(){
+    try{
+      const respuesta = await fetch("https://jsonplaceholder.typicode.com/posts",{
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(nuevoPostAsync),
+
+
+      } );
+      if(!respuesta.ok){
+        throw new Error(`Error ${respuesta.status}${respuesta.statusText}`)
+      }
+      const datos = await respuesta.json();
+      console.log("Datos del envio sincronizado recibidos", datos);
+      
+    }
+    catch(error){
+      console.error("Error en los datos de sincro", error.message)
+    }
+
+   }
+
+   enviandoUnObjeto();
+    
+
+
+
+  // ## Ejercicio 22 - fetch PUT simulado Reemplaza completamente
+  //  el post con id: 1 en la misma API usando el método PUT,
+  // enviando un nuevo title y body.
+
+  const nuevoPostActualizadoAsync = {
+    id: 2,
+    title: "Hola como estabas",
+    body: "Ya hemos terminado las pruebas",
+    userId: 2
+  }
+
+
+  async function UsandoSyncActualizar(){
+    try{
+      const respuesta3 = await fetch("https://jsonplaceholder.typicode.com/posts/1",{
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(nuevoPostActualizadoAsync)
+      }
+
+      );
+      if(!respuesta3.ok){
+        throw new Error(`Error en los datos sincros ${respuesta3.status}${respuesta3.statusText}`)
+      }
+      const resultado3 = await respuesta3.json()
+      console.log("Datos recibidos de la sincro", resultado3)
+    }
+    catch(error){
+      console.error("Error en la sincronizacion", error.message)
+    }
+  }
+
+  UsandoSyncActualizar()
+
+
+
+
+
+
