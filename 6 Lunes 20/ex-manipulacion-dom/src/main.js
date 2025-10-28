@@ -811,7 +811,51 @@ simularErrorFetch();
   UsandoSyncActualizar()
 
 
+//25-26 Amplia el ejercicio anterior...
 
+  const inputNombre = document.createElement("input");
+  inputNombre.placeholder = "Introduce tu nombre";
+  inputNombre.id ="nombre";
+
+  const buttonGuardar = document.createElement("button");
+  buttonGuardar.textContent = "Guardar";
+
+
+const parrafo2 = document.createElement("p");
+const parrafo3 = document.createElement("p");
+
+
+const ex25 = document.getElementById("ex25");
+ex25.appendChild(inputNombre);
+ex25.appendChild(buttonGuardar);
+ex25.appendChild(parrafo2);
+ex25.appendChild(parrafo3);
+
+if( typeof localStorage !== undefined){
+    parrafo2.textContent = localStorage.getItem("nombreUsuario")
+  }
+
+  if( typeof sessionStorage !== undefined){
+    parrafo3.textContent = sessionStorage.getItem("nombreUsuario")
+  }
+
+
+
+
+buttonGuardar.addEventListener("click", ()=>{
+  
+  if( typeof localStorage !== undefined){
+    localStorage.setItem("nombreUsuario", inputNombre.value)
+  }
+  if( typeof sessionStorage !== undefined){
+    sessionStorage.setItem("nombreUsuario", inputNombre.value)
+  }
+}) 
+
+
+  
+  
+  
 
 
 
