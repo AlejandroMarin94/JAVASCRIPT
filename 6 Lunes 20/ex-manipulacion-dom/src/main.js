@@ -812,8 +812,20 @@ simularErrorFetch();
 
 
 //25-26 Amplia el ejercicio anterior...
+//## Ejercicio 25 — localStorage Crear un elemento input donde el 
+// usuario pueda introducir su nombre y un boton para ejecutar una acción 
+// con contenido que ponga Guardar. Al lanzar el evento de pulsar ese boton, 
+// guarda su valor en localStorage con el nombre que desees y recupéralo 
+// al recargar la página.Ejecuta esta accion verificando si actualmente 
+// está disponible localStorage.
 
-  const inputNombre = document.createElement("input");
+
+//## Ejercicio 26 — sessionStorage Amplía el ejercicio anterior pero usando
+//  ahora sessionStorage para mostrar la diferencia al cerrar la pestaña. 
+// Ejecuta esta accion verificando si actualmente está disponible sessionStorage.
+
+/* 
+const inputNombre = document.createElement("input");
   inputNombre.placeholder = "Introduce tu nombre";
   inputNombre.id ="nombre";
 
@@ -851,11 +863,140 @@ buttonGuardar.addEventListener("click", ()=>{
     sessionStorage.setItem("nombreUsuario", inputNombre.value)
   }
 }) 
+*/
+
+const inputNombre = document.createElement("input");
+  inputNombre.placeholder = "Introduce tu nombre";
+  inputNombre.id ="nombre";
+
+  const buttonGuardar = document.createElement("button");
+  buttonGuardar.textContent = "Guardar";
+
+
+const parrafo2 = document.createElement("p");
+const parrafo3 = document.createElement("p");
+
+
+const ex25 = document.getElementById("ex25");
+ex25.appendChild(inputNombre);
+ex25.appendChild(buttonGuardar);
+ex25.appendChild(parrafo2);
+ex25.appendChild(parrafo3);
+
+if(typeof localStorage!=="undefined"){
+  parrafo2.textContent = localStorage.getItem("nombreUsuario");
+}
+if(typeof sessionStorage!=="undefined"){
+  parrafo3.textContent = sessionStorage.getItem("nombreUsuario");
+}
+
+buttonGuardar.addEventListener("click", ()=>{
+  if(typeof localStorage!=="undefined"){
+    localStorage.setItem("nombreUsuario", inputNombre.value)
+  }
+  if(typeof localStorage !==undefined){
+    sessionStorage.setItem("nombreUsuario", inputNombre.value)
+  }
+})
 
 
   
   
-  
+  //27 ## Ejercicio 27 - Cargar datos de peliculas desde TMDB Vamos 
+  // a realizar una consulta más completa a la APi de TMDB. En ella, 
+  // rescataremos los datos de las películas y las vams a mostrar por 
+  // pantalla de una forma que se asemeje a una web actual.
 
 
+import { API_KEY } from "./config.js";
+
+const ex27 = document.getElementById("ex27");
+
+const titulo = document.createElement("h1");
+titulo.textContent = "Buscador de peliculas TMBD"
+
+ex27.appendChild(titulo);
+
+
+const input = document.createElement("input");
+input.placeholder ="Escribe aqui el nombre de la pelicula";
+
+ex27.appendChild(input);
+
+
+const botonBusqueda = document.createElement("button");
+botonBusqueda.textContent= "Buscar";
+
+ex27.appendChild(botonBusqueda);
+
+
+const contenedorPeliculas = document.createElement("section");
+contenedorPeliculas.style.display = "flex";
+contenedorPeliculas.style.flexDirection= "column";
+ex27.appendChild(contenedorPeliculas);
+
+
+botonBusqueda.addEventListener("click",()=>{
+  const query = input.value.trim();
+  if(!query) return;
+
+
+  const url= `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=es-ES`;
+
+  fetch(url)
+  .then(response=>response.json())
+  .then(data=>{
+    contenedorPeliculas.innerHTML = "";
+
+    if(data.results.length ===0){
+      contenedorPeliculas.innerHTML= "<p> No se encontraron peliculas. </p>"
+      return;
+    }
+
+    data.results.forEach(pelicula=>{
+      const card = document.createElement("div");
+      card.style.background = "black";
+      card.style.display = "flex";
+      card.style.flexDirection = "column";
+      card.style.alignItems = "center";
+
+      const titulo = pelicula.title;
+      const resumen = pelicula.overview;
+      const fecha = pelicula.release_date || "fecha desconocida";
+      const poster = pelicula.poster_path 
+      ? `https://image.tmdb.org/t/p/w300${pelicula.poster_path}`
+      : "";
+
+      if(poster){
+        const img = document.createElement("img");
+        img.src = poster;
+        card.appendChild(img);
+      }
+
+      const h3 = document.createElement("h3");
+      h3.textContent = titulo;
+      h3.style.color= "white"
+      card.appendChild(h3);
+
+      const parrafoFecha = document.createElement("p");
+      parrafoFecha.innerHTML = "Estreno " + fecha;
+      parrafoFecha.style.color= "white"
+      card.appendChild(parrafoFecha);
+
+      const parrafoResumen = document.createElement("p");
+      parrafoResumen.textContent = resumen;
+      parrafoResumen.style.textAlign = "justify";
+      parrafoResumen.style.color= "white"
+      card.appendChild(parrafoResumen);
+
+      
+
+      contenedorPeliculas.appendChild(card);
+    })
+  })
+  .catch(error=>{
+ex27.innerHTML = "<p> Error al cargar peliculas </p>";
+console.error("Error al recibir peliculas", error);
+  })
+})
 
