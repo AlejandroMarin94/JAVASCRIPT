@@ -910,6 +910,7 @@ buttonGuardar.addEventListener("click", ()=>{
 
 import { API_KEY } from "./config.js";
 
+
 const ex27 = document.getElementById("ex27");
 
 const titulo = document.createElement("h1");
@@ -944,7 +945,12 @@ botonBusqueda.addEventListener("click",()=>{
   const url= `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=es-ES`;
 
   fetch(url)
-  .then(response=>response.json())
+  .then(response=>{
+    if(!response.ok){
+      throw new Error ("Error en la cargar " + response.status);
+    }
+    return response.json();
+  })
   .then(data=>{
     contenedorPeliculas.innerHTML = "";
 
