@@ -21,3 +21,5 @@ export function createMovieCard (movie){
 
     return movieCardElement;
 }
+
+ 

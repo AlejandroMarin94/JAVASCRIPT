@@ -1,4 +1,5 @@
 import { createMovieCard } from "../components/movieCard.js";
+import { createDetailsCard } from "../components/movieCardDetail.js";
 
 
 export function showMovies(movies, container) {
@@ -12,6 +13,9 @@ export function showMovies(movies, container) {
 movies.forEach(movie=>{
     const movieCard = createMovieCard(movie);
     container.appendChild(movieCard);
+    
+
+    
     
 
 })

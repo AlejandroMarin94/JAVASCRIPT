@@ -18,3 +18,7 @@ export async function getMovies(container){
         
     }
 }
+
+function getDetails(container){
+    
+}
