@@ -1,3 +1,6 @@
+import { createDetailsCard } from "./movieCardDetail";
+import { getCast } from "../api/apifetch.js";
+
 export function createMovieCard (movie){
 
 
@@ -18,6 +21,29 @@ export function createMovieCard (movie){
     movieCardElement.appendChild(imgElement);
     movieCardElement.appendChild(titleElement);
     movieCardElement.appendChild(pElement);
+
+    
+    imgElement.addEventListener("click",async ()=>{
+      console.log("hola")
+      const existingDetails = document.querySelector(`#details-${movie.id}`);
+      if(existingDetails) return;
+
+      const castArray = await getCast(movie.id);
+  const detailCard = createDetailsCard(movie, castArray);
+
+      const tarjetaDetalles = document.createElement("div");
+      tarjetaDetalles.appendChild(detailCard);
+      
+      
+     
+      
+      document.querySelector("#app").appendChild(detailCard);
+     
+      
+
+      
+
+    });
 
     return movieCardElement;
 }

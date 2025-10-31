@@ -12,6 +12,10 @@ export function showMovies(movies, container) {
 
 movies.forEach(movie=>{
     const movieCard = createMovieCard(movie);
+    movieCard.addEventListener("click", ()=>{
+        const tarjetasecundaria = document.createElement("div");
+        tarjetasecundaria.textContent = "niojfdbngiojferbngkjrebgiorbegkj"
+    })
     container.appendChild(movieCard);
     
 
@@ -21,3 +25,4 @@ movies.forEach(movie=>{
 })
 
 }
+

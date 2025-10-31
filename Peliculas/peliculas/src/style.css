@@ -1,15 +1,23 @@
 
-
+.movies-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 .detail-card{
     display: flex;
     flex-direction: row;
+    height: 650px;
+
+
 }
 
-.detail-cardSec{
-    display: flex;
-    flex-direction: column;
-   
+
+.img-detail{ 
+   border-radius: 15px;
+   margin-top: 15px;
+
 }
+
 
 .title-detail{
     margin-left: 1.5rem;
@@ -18,3 +26,40 @@
 .description-detail{
     margin-left: 1.5rem;
 }
+
+.detail-cuarto {
+  width: auto;
+  padding: 3rem;
+   
+}
+
+.actors-gallery {
+  display: flex; /* Coloca las tarjetas en fila horizontal */
+  flex-direction: row; /* Asegura que se alineen de izquierda a derecha */
+  align-items: center;
+  gap: 1rem; /* Espacio entre cada tarjeta */
+  overflow-x: auto; /* Activa el scroll horizontal si hay muchas tarjetas */
+height: 450px;
+  margin-left: 7rem;
+
+  width: 900px; /* Espacio interno alrededor de la galería */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  scroll-behavior: smooth; /* Hace que el desplazamiento sea suave */
+}
+
+.actors-gallery::-webkit-scrollbar {
+  height: 1rem; /* Altura de la barra horizontal */
+}
+
+.actors-gallery::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Color de fondo de la pista (la base de la barra) */
+  border-radius: 1rem;
+}
+
+.actors-gallery::-webkit-scrollbar-thumb {
+  background-color: #0077cc; /* Color del "pulgar" que se arrastra */
+  border-radius: 1rem;
+  border: 2px solid #e0e0e0; /* Borde para que se vea más integrado */
+}
+
+

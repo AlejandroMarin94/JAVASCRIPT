@@ -1,6 +1,9 @@
 import './style.css'
-import { getMovies } from './api/apifetch.js';
+import {getDetails, getMovies } from './api/apifetch.js';
 import { createDetailsCard } from './components/movieCardDetail.js';
+import { createMovieCard } from './components/movieCard.js';
+import { createSelect } from './api/createdSelect.js';
+
 
 const anchorElement = document.querySelector("#app");
 
@@ -19,11 +22,19 @@ buttonGetMovies.textContent = "Get movies";
 const buttonGetDetails = document.createElement("button");
 buttonGetDetails.textContent = "Get details";
 
+const selectElement = createSelect();
+
+
+
+
 
 anchorElement.appendChild(titleElement);
 anchorElement.appendChild(buttonGetMovies);
 anchorElement.appendChild(buttonGetDetails);
+anchorElement.appendChild(selectElement);
 anchorElement.appendChild(moviesContainer);
+
+
 
 
 
@@ -37,13 +48,18 @@ buttonGetMovies.addEventListener("click", ()=>{
 
     
 })
-/*
-const detailCard= createDetailsCard();
-anchorElement.appendChild(detailCard);
-*/
+
 
 buttonGetDetails.addEventListener("click", ()=>{
     console.log("Obteniendo detalles...");
+    const limpieza = document.querySelectorAll(".tarjeta-detalles");
+    limpieza.forEach((detalle)=>{
+        detalle.remove()
+    })
     
+
+    getDetails(1311031, moviesContainer);
+  
     
+  
 })
