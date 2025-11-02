@@ -3,7 +3,7 @@ import { createDetailsCard } from "../components/movieCardDetail.js";
 
 export function showMovies(movies, container) {
   if (!movies || movies.length === 0) {
-    container.textContent = "Mo se han recibido peliculas";
+    container.textContent = "No se han recibido peliculas";
     return;
   } else {
     container.innerHTML = "";
@@ -15,3 +15,6 @@ export function showMovies(movies, container) {
     container.appendChild(movieCard);
   });
 }
+
+
+

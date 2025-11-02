@@ -60,3 +60,24 @@ export async function selectGetMovie(container, datalist){
   }
 }
 
+
+
+export async function buscarPeli(nombre,container){
+
+
+  try {
+    const response = await fetch (`https://api.themoviedb.org/3/search/movie?api_key=${apiConfig.apiKey}&query=${encodeURIComponent(nombre)}`)
+
+    
+    if(!response.ok){
+      throw new Error ("Error pelicula no encontrada", response.status)
+    }
+
+    const data = await response.json()
+    showMovies(data.results, container)
+    
+    
+  } catch (error) {
+    console.log("Hay un error en la busqueda", error)
+  }
+}

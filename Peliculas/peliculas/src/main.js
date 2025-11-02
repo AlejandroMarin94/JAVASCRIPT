@@ -1,5 +1,5 @@
 import './style.css'
-import {getDetails, getMovies } from './api/apifetch.js';
+import {buscarPeli, getDetails, getMovies } from './api/apifetch.js';
 import { createDetailsCard } from './components/movieCardDetail.js';
 import { createMovieCard } from './components/movieCard.js';
 import { createSelect } from './api/createdSelect.js';
@@ -22,6 +22,12 @@ buttonGetMovies.textContent = "Get movies";
 const buttonGetDetails = document.createElement("button");
 buttonGetDetails.textContent = "Get details";
 
+const inputPelis = document.createElement("input");
+inputPelis.setAttribute("id", "input-pelis");
+inputPelis.className = "inputPelis";
+inputPelis.placeholder = "Introduce nombre de película";
+
+
 const selectElement = createSelect();
 
 
@@ -32,6 +38,7 @@ anchorElement.appendChild(titleElement);
 anchorElement.appendChild(buttonGetMovies);
 anchorElement.appendChild(buttonGetDetails);
 anchorElement.appendChild(selectElement);
+anchorElement.appendChild(inputPelis);
 anchorElement.appendChild(moviesContainer);
 
 
@@ -62,4 +69,21 @@ buttonGetDetails.addEventListener("click", ()=>{
   
     
   
+})
+
+inputPelis.addEventListener("input", async(event)=>{
+   
+ 
+const texto = event.target.value.trim();
+
+
+if(texto.length >=3){
+    await buscarPeli(texto,moviesContainer);
+
+}else {
+    moviesContainer.innerHTML = "<p> Sin peliculas que mostrar</p>";
+}
+ 
+
+
 })
