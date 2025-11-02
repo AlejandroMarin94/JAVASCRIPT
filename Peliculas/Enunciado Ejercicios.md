@@ -184,3 +184,10 @@ Dichos listados están indicados en la pagina de TMDB, vease: popular, top_rated
 Meter ese valor en la URL de forma dinámica.
 Muestra los títulos y posters de las películas en una página web.
 URL de la API: https://api.themoviedb.org/3/movie/TIPO_LISTADO?api_key=TU_CLAVE_API
+
+## Ejercicio 32 - Añadir a la cabecera de la web un elemento tipo input para poder buscar películas por ese título
+
+Crea una función que utilice fetch para hacer una petición GET a la API de TMDb y obtener la lista de películas atendiendo a lo que se haya escrito en el input.
+Se debe controlar que hay mínimo 3 carácteres escrito para que se realice la búsqueda.
+Esta búsqqueda se hará automáticamente al escribir, no depende de que se pulse ningún botón, soolo del eventListener del input.
+Muestra los títulos y posters de las películas en una página web.
