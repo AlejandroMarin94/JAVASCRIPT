@@ -31,9 +31,9 @@ export function createMovieCard(movie) {
     const detailCard = createDetailsCard(movie, castArray);
 
     const tarjetaDetalles = document.createElement("div");
-    tarjetaDetalles.appendChild(detailCard);
+    tarjetaDetalles.appendChild(detailCard); 
 
-    document.querySelector("#app").appendChild(detailCard);
+    document.querySelector("#app").appendChild(tarjetaDetalles);
   });
 
   return movieCardElement;
