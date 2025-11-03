@@ -26,6 +26,8 @@ export function createMovieCard(movie) {
     console.log("hola");
     const existingDetails = document.querySelector(`#details-${movie.id}`);
     if (existingDetails) return;
+    console.log(movie);
+    
 
     const castArray = await getCast(movie.id);
     const detailCard = createDetailsCard(movie, castArray);
