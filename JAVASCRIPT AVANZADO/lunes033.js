@@ -126,6 +126,191 @@ const mascotita = crearSuperMascota("Lola");
 console.log(mascotita.volador());
 console.log(mascotita.nadador());
 
+//11
+
+const animal={ sonido(){
+    console.log("Hace un sonido");
+    
+}
+
+}
+
+animal.sonido();
+
+const gato = Object.create(animal);
+
+gato.maullar= ()=>{
+    console.log("Miau");
+    
+}
+
+gato.maullar()
+
+//12
+
+const objetoA= {a: "Hola"};
+const objetoB= {b: "soy"};
+const objetoC= {c: "Alejandro"}
+
+const objetosUnidos = Object.assign([],objetoA,objetoB,objetoC);
+console.log(objetosUnidos);
+
+//13
+
+const caja ={
+    color:"rojo",
+    forma: "cuadrada",
+}
+
+Object.seal(caja);
+caja.contenido= "dinero";
+console.log(caja);
+
+//14 
+console.log(gato.hasOwnProperty("maullar"));
+console.log(gato.hasOwnProperty("sonido"));
+
+//15 
+
+
+
+const valores = new Set([1, 2, 2, 3, 4]);
+console.log(valores);
+valores.delete(3);
+console.log(valores);
+console.log(valores.has(4));
+
+//16
+
+console.log(valores.add(5))
+
+//17
+
+const objetitos = new WeakSet
+
+const objetitoA = {nombre: "Alejandro"}
+const objetitoB = {nombre: "Mar"}
+
+objetitos.add(objetitoB);
+objetitos.add(objetitoA);
+
+console.log(objetitos.has(objetitoA));
+
+//18
+
+const animales = new Map ()
+
+animales.set("perro", "mamifero");
+animales.set("gato", "mamifero");
+animales.set("ballena", "mamifero");
+
+
+
+console.log(animales)
+
+
+
+
+//19
+
+const mapa = new Map()
+
+const clave1 = {id:1}
+const clave2 = {id:2}
+
+mapa.set(clave1, "Alejandro");
+mapa.set(clave2, "Mar");
+
+console.log("Map completo: ", mapa);
+console.log("Map id:1 ", mapa.get(clave1));
+
+//20 
+
+const objeto = new WeakMap
+const usuario = {}
+
+objeto.set(usuario, "abc123")
+console.log(objeto.has(usuario));
+
+//21
+
+const arr1 =[1,2]
+const arr2 =[3,4]
+const arr3 =[5,6]
+
+const array4 = [...arr1, ...arr2, ...arr3];
+console.log(array4);
+
+//22
+
+const array10 = [10, 20, 30, 40];
+
+const [a,b,...rest] = array10
+
+console.log(a);
+console.log(b);
+console.log(rest);
+
+//23
+
+arrayTri = [1, [2, [3, [4]]]];
+
+console.log(arrayTri.flat(3));
+
+//24
+
+arrayMap = [2, 4, 6]
+
+console.log(arrayMap.flatMap(n=> [n, n/2]));
+
+//25
+
+const bucle = new Map ();
+
+bucle.set("a",[1,2,3]);
+bucle.set("b",2)
+
+for(const [k,x,] of bucle){
+    console.log(k,x);
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

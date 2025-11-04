@@ -1,4 +1,7 @@
-1; //
+ //#### 1. Crea una función pura 
+// llamada descuento que reciba un precio 
+// y devuelva el precio con un 10% de descuento.
+
 console.log("(1)============================================(1)");
 
 function descuento(precio) {
@@ -8,7 +11,12 @@ function descuento(precio) {
 console.log(descuento(50));
 
 console.log("(2)============================================(2)");
-2; //
+//#### 2. Dada una persona: 
+// `{nombre: "Lucia", edad: 30}`,crea una nueva 
+// persona llamada nuevaLucia que tenga la misma 
+// edad pero cambie su nombre a "Lucía Pérez", 
+// sin modificar el objeto original.
+
 
 persona = {
   nombre: "Lucia",
@@ -22,12 +30,18 @@ console.log(nuevaPersona);
 console.log("(3)============================================(3)");
 
 
-3; //
+ //#### 3. Usa una función de orden 
+ // superior `(operar)` para multiplicar dos números.
+
 
 const operando = (a, b, op) => op(a, b);
 console.log(operando(3, 2, (x, y) => x * y));
 
-4; //
+4; // #### 4. Define dos funciones, 
+// `doble e incrementar`, y compónlas (como en `compose`)
+// para crear una nueva función que primero duplique 
+// un número y luego le sume 1.
+
 console.log("(4)============================================(4)");
 
 
@@ -49,7 +63,11 @@ function sumando(y) {
 const union = (x) => sumando(multiplicando(x));
 console.log(union(8));
 
-//5
+//5 #### 5. Crea una clase `Coche` con un
+//  constructor que reciba `marca` y `modelo`. 
+// ñade un método `arrancar()` que devuelva
+//  `"El coche <marca> ha arrancado"`.
+
 console.log("(5)============================================(5)");
 
 
@@ -79,9 +97,15 @@ console.log(cocheUno.arrancar())
 console.log(Coche.tipo())
 
 console.log("(6)============================================(6)");
-//6
+//6 #### 6. Añade un método estático `tipos()`
+//  a la clase `Coche` que devuelva `"Vehículo terrestre"`.
+
 console.log("(7)============================================(7)");
-//7
+//7 #### 7. Crea una clase `CocheElectrico` 
+// que herede de `Coche` y tenga un campo adicional 
+// `bateria`. Sobrescribe el método `arrancar()` 
+// para incluir ese dato.
+
 
 class cocheElectrico extends Coche {
   constructor(marca, modelo, bateria) {
@@ -99,7 +123,10 @@ const electrico = new cocheElectrico("Toyota", "Corolla", 50);
 
 console.log(electrico.arrancar())
 
-//8 
+//8 #### 8 . Añade un getter `info` a la 
+// clase `Coche` que devuelva una cadena con la 
+// marca y el modelo.
+
 console.log("(8)============================================(8)");
 
 
@@ -109,7 +136,10 @@ console.log(cochecito.getInfo());
 
 
 
-9// 
+//  #### 9 . Crea una clase `CajaFuerte` 
+// con un campo privado `#codigo` inicializado en 
+// `4321`. Añade un getter `codigo` para acceder al valor.
+
 console.log("(9)============================================(9)");
 
 
@@ -127,7 +157,11 @@ const clave = new CajaFuerte();
 console.log(clave.getCodigo());
 
 console.log("(10)============================================(10)");
-10// 
+// 10 #### 10. Implementa una función 
+// `crearSuperMascota(nombre)` que combine 
+// las capacidades de un objeto `volador` y un 
+// objeto `nadador`, y pruébala.
+ 
 
 const volador = {volar(){
     return ("Estoy volando")
@@ -153,7 +187,10 @@ console.log(perro.nadar());
 console.log(perro.nombre);
 
 
-//11 
+//11 #### 11. Crea un objeto `animal` con un método `sonido()` 
+// que muestre `"Hace un sonido"`. Luego crea otro objeto `gato` 
+// con `Object.create(animal)` y añade un método `maullar()` que diga `"Miau"`.
+
 console.log("(11)============================================(11)");
 console.log("(12)============================================(12)");
 
@@ -173,6 +210,8 @@ gato.maullar =function(){
 }
 
 gato.maullar();
+// #### 12. Usa `Object.assign` para combinar 
+// tres objetos (`a`, `b`, `c`) en uno solo.
 
 const a = {a:"Hola"};
 const b = {b :"soy un"};
@@ -183,7 +222,9 @@ const frase =Object.assign({},a,b,c)
 console.log(frase);
 
 
-//13
+//13 #### 13. Crea un objeto `caja` con dos propiedades,
+//  séllalo con `Object.seal()` e intenta añadir una nueva propiedad. ¿Qué ocurre?.
+
 console.log("(13)============================================(13)");
 
 const caja ={
@@ -198,14 +239,18 @@ console.log(caja);
 caja.contenido ="dinero";
 console.log(caja);
 
-//14
+//14 #### 14 . Comprueba con `hasOwnProperty` si el objeto `
+// gato` tiene su propio método `maullar` y si hereda `sonido`.
+
 console.log("(14)============================================(14)");
 
 
 console.log(gato.hasOwnProperty("maullar"));
 console.log(gato.hasOwnProperty("sonido"));
 
-//15
+//15 #### 15 . Crea un `Set` con los valores `[1, 2, 2, 3, 4]`, 
+// elimina el número 3 y comprueba si el número 4 está presente.
+
 console.log("(15)============================================(15)");
 
 
@@ -215,7 +260,9 @@ console.log(valores);
 
 console.log(valores.has(4));
 
-//16
+//16 #### 16 . Añade al `Set` anterior el número 5 y 
+// muestra todos los valores como un array.
+
 console.log("(16)============================================(16)");
 
 
@@ -223,7 +270,9 @@ console.log("(16)============================================(16)");
 valores.add(5);
 console.log([...valores]);
 
-//17
+//17 #### 17 . Crea un `WeakSet` y añade dentro dos 
+// objetos diferentes (`{nombre: "A"} y {nombre: "B"}`).
+
 console.log("(17)============================================(17)");
 
 
@@ -235,7 +284,10 @@ const objetoB = {nombre: "Mar"};
 ws.add(objetoA,objetoB);
 console.log(ws.has(objetoA,objetoB));
 
-//18
+//18 #### 18 . Crea un `Map` que relacione nombres de 
+// animales con su tipo (por ejemplo "perro" → "mamífero"), 
+// y muestra el tamaño del `Map`.
+
 console.log("(18)============================================(18)");
 
 
@@ -249,7 +301,9 @@ console.log(nombresAnimales.get(`perro`));
 console.log(nombresAnimales.size);
 
 
-//19 
+//19 #### 19 . Crea un `Map` donde las claves sean 
+// objetos (por ejemplo `{ id: 1 }`) y los valores sean nombres.
+
 console.log("(19)============================================(19)");
 
 
