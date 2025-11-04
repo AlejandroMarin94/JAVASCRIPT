@@ -22,20 +22,6 @@ console.log(nuevaPersona);
 const operando = (a, b, op) => op(a, b);
 console.log(operando(3, 2, (x, y) => x * y));
 
-function aplicar(fn,x,y){
-  return fn(x,y);
-}
-
-function multiplicar(x,y){
-  return x*y
-}
-
-console.log(aplicar(multiplicar, 3,5));
-
-const calculando = (a,b,op) => op(a,b);
-console.log(calculando(10,2, (a,b)=>a*b));
-
-
 4; //
 
 const doble = (x) => x * 2;
@@ -44,12 +30,6 @@ const sumar = (x) => x + 1;
 const unidas = (x) => sumar(doble(x));
 
 console.log(unidas(5));
-
-const sumatorio = x => x+1
-const multiplicador = x => x*2
-const totalizador = x=> sumatorio(multiplicador(x))
-console.log(totalizador(5));
-
 
 function multiplicando(x) {
   return x * 2;
@@ -155,5 +135,25 @@ const perro = crearSuperMascota("Lola");
 console.log(perro.volar());
 console.log(perro.nadar());
 console.log(perro.nombre);
+
+
+//11
+
+const animal = {
+  sonido(){
+    console.log("Hace un sonido");
+    
+  }
+}
+
+const gato = Object.create(animal);
+gato.maullar =function(){
+  console.log("Miau");
+  
+}
+  
+
+
+
 
 
