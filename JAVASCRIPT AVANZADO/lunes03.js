@@ -1,5 +1,5 @@
- //#### 1. Crea una función pura 
-// llamada descuento que reciba un precio 
+//#### 1. Crea una función pura
+// llamada descuento que reciba un precio
 // y devuelva el precio con un 10% de descuento.
 
 console.log("(1)============================================(1)");
@@ -11,14 +11,13 @@ function descuento(precio) {
 console.log(descuento(50));
 
 console.log("(2)============================================(2)");
-//#### 2. Dada una persona: 
-// `{nombre: "Lucia", edad: 30}`,crea una nueva 
-// persona llamada nuevaLucia que tenga la misma 
-// edad pero cambie su nombre a "Lucía Pérez", 
+//#### 2. Dada una persona:
+// `{nombre: "Lucia", edad: 30}`,crea una nueva
+// persona llamada nuevaLucia que tenga la misma
+// edad pero cambie su nombre a "Lucía Pérez",
 // sin modificar el objeto original.
 
-
-persona = {
+const persona = {
   nombre: "Lucia",
   edad: "30",
 };
@@ -29,21 +28,18 @@ console.log(nuevaPersona);
 
 console.log("(3)============================================(3)");
 
-
- //#### 3. Usa una función de orden 
- // superior `(operar)` para multiplicar dos números.
-
+//#### 3. Usa una función de orden
+// superior `(operar)` para multiplicar dos números.
 
 const operando = (a, b, op) => op(a, b);
 console.log(operando(3, 2, (x, y) => x * y));
 
-4; // #### 4. Define dos funciones, 
+4; // #### 4. Define dos funciones,
 // `doble e incrementar`, y compónlas (como en `compose`)
-// para crear una nueva función que primero duplique 
+// para crear una nueva función que primero duplique
 // un número y luego le sume 1.
 
 console.log("(4)============================================(4)");
-
 
 const doble = (x) => x * 2;
 const sumar = (x) => x + 1;
@@ -64,12 +60,11 @@ const union = (x) => sumando(multiplicando(x));
 console.log(union(8));
 
 //5 #### 5. Crea una clase `Coche` con un
-//  constructor que reciba `marca` y `modelo`. 
+//  constructor que reciba `marca` y `modelo`.
 // ñade un método `arrancar()` que devuelva
 //  `"El coche <marca> ha arrancado"`.
 
 console.log("(5)============================================(5)");
-
 
 class Coche {
   constructor(marca, modelo) {
@@ -81,104 +76,94 @@ class Coche {
     return `El coche ${this.marca} ha arrancado`;
   }
 
-  getInfo(){
-    return `El coche es ${this.marca} y es el modelo ${this.modelo}`
+  getInfo() {
+    return `El coche es ${this.marca} y es el modelo ${this.modelo}`;
   }
 
   static tipo() {
     return "El vehiculo es terrestre";
   }
-  
-
 }
 const cocheUno = new Coche("Toyota", "Corolla");
 
-console.log(cocheUno.arrancar())
-console.log(Coche.tipo())
+console.log(cocheUno.arrancar());
+console.log(Coche.tipo());
 
 console.log("(6)============================================(6)");
 //6 #### 6. Añade un método estático `tipos()`
 //  a la clase `Coche` que devuelva `"Vehículo terrestre"`.
 
 console.log("(7)============================================(7)");
-//7 #### 7. Crea una clase `CocheElectrico` 
-// que herede de `Coche` y tenga un campo adicional 
-// `bateria`. Sobrescribe el método `arrancar()` 
+//7 #### 7. Crea una clase `CocheElectrico`
+// que herede de `Coche` y tenga un campo adicional
+// `bateria`. Sobrescribe el método `arrancar()`
 // para incluir ese dato.
-
 
 class cocheElectrico extends Coche {
   constructor(marca, modelo, bateria) {
-    super(marca, modelo)
+    super(marca, modelo);
     this.bateria = bateria;
   }
 
-  arrancar(){
-    return `El coche es ${this.marca} ${this.modelo} ha arrancado con ${this.bateria}%`
+  arrancar() {
+    return `El coche es ${this.marca} ${this.modelo} ha arrancado con ${this.bateria}%`;
   }
-  
 }
 
 const electrico = new cocheElectrico("Toyota", "Corolla", 50);
 
-console.log(electrico.arrancar())
+console.log(electrico.arrancar());
 
-//8 #### 8 . Añade un getter `info` a la 
-// clase `Coche` que devuelva una cadena con la 
+//8 #### 8 . Añade un getter `info` a la
+// clase `Coche` que devuelva una cadena con la
 // marca y el modelo.
 
 console.log("(8)============================================(8)");
 
-
 const cochecito = new Coche("Toyota", "Corolla");
 console.log(cochecito.getInfo());
 
-
-
-
-//  #### 9 . Crea una clase `CajaFuerte` 
-// con un campo privado `#codigo` inicializado en 
+//  #### 9 . Crea una clase `CajaFuerte`
+// con un campo privado `#codigo` inicializado en
 // `4321`. Añade un getter `codigo` para acceder al valor.
 
 console.log("(9)============================================(9)");
 
-
 class CajaFuerte {
+  #codigo = 4321;
 
-    #codigo = 4321
-    
-
-    getCodigo(){
-        return this.#codigo;
-    }
+  getCodigo() {
+    return this.#codigo;
+  }
 }
 
 const clave = new CajaFuerte();
 console.log(clave.getCodigo());
 
 console.log("(10)============================================(10)");
-// 10 #### 10. Implementa una función 
-// `crearSuperMascota(nombre)` que combine 
-// las capacidades de un objeto `volador` y un 
+// 10 #### 10. Implementa una función
+// `crearSuperMascota(nombre)` que combine
+// las capacidades de un objeto `volador` y un
 // objeto `nadador`, y pruébala.
- 
 
-const volador = {volar(){
-    return ("Estoy volando")
-}}
+const volador = {
+  volar() {
+    return "Estoy volando";
+  },
+};
 
-const nadador = { nadar(){
-    return ("Estoy nadando")
-}}
+const nadador = {
+  nadar() {
+    return "Estoy nadando";
+  },
+};
 
-
-function crearSuperMascota(nombre){
-    return{
-        nombre,
-        ...volador,
-        ...nadador
-    };
-
+function crearSuperMascota(nombre) {
+  return {
+    nombre,
+    ...volador,
+    ...nadador,
+  };
 }
 
 const perro = crearSuperMascota("Lola");
@@ -186,57 +171,50 @@ console.log(perro.volar());
 console.log(perro.nadar());
 console.log(perro.nombre);
 
-
-//11 #### 11. Crea un objeto `animal` con un método `sonido()` 
-// que muestre `"Hace un sonido"`. Luego crea otro objeto `gato` 
+//11 #### 11. Crea un objeto `animal` con un método `sonido()`
+// que muestre `"Hace un sonido"`. Luego crea otro objeto `gato`
 // con `Object.create(animal)` y añade un método `maullar()` que diga `"Miau"`.
 
 console.log("(11)============================================(11)");
 console.log("(12)============================================(12)");
 
-
-
 const animal = {
-  sonido(){
+  sonido() {
     console.log("Hace un sonido");
-    
-  }
-}
+  },
+};
 
 const gato = Object.create(animal);
-gato.maullar =function(){
+gato.maullar = function () {
   console.log("Miau");
-  
-}
+};
 
 gato.maullar();
-// #### 12. Usa `Object.assign` para combinar 
+// #### 12. Usa `Object.assign` para combinar
 // tres objetos (`a`, `b`, `c`) en uno solo.
 
-const a = {a:"Hola"};
-const b = {b :"soy un"};
-const c = {c: "desarrolador"};
+const a = { a: "Hola" };
+const b = { b: "soy un" };
+const c = { c: "desarrolador" };
 
-const frase =Object.assign({},a,b,c)
+const frase = Object.assign({}, a, b, c);
 
 console.log(frase);
-
 
 //13 #### 13. Crea un objeto `caja` con dos propiedades,
 //  séllalo con `Object.seal()` e intenta añadir una nueva propiedad. ¿Qué ocurre?.
 
 console.log("(13)============================================(13)");
 
-const caja ={
+const caja = {
   color: "rojo",
-  forma: "cuadrada"
-}
-
+  forma: "cuadrada",
+};
 
 Object.seal(caja);
 caja.color = "verde";
 console.log(caja);
-caja.contenido ="dinero";
+//caja.contenido = "dinero";
 console.log(caja);
 
 //14 #### 14 . Comprueba con `hasOwnProperty` si el objeto `
@@ -244,194 +222,282 @@ console.log(caja);
 
 console.log("(14)============================================(14)");
 
-
 console.log(gato.hasOwnProperty("maullar"));
 console.log(gato.hasOwnProperty("sonido"));
 
-//15 #### 15 . Crea un `Set` con los valores `[1, 2, 2, 3, 4]`, 
+//15 #### 15 . Crea un `Set` con los valores `[1, 2, 2, 3, 4]`,
 // elimina el número 3 y comprueba si el número 4 está presente.
 
 console.log("(15)============================================(15)");
 
-
-const valores = new Set([1,2,2,3,4]);
+const valores = new Set([1, 2, 2, 3, 4]);
 valores.delete(3);
 console.log(valores);
 
 console.log(valores.has(4));
 
-//16 #### 16 . Añade al `Set` anterior el número 5 y 
+//16 #### 16 . Añade al `Set` anterior el número 5 y
 // muestra todos los valores como un array.
 
 console.log("(16)============================================(16)");
 
-
-
 valores.add(5);
 console.log([...valores]);
 
-//17 #### 17 . Crea un `WeakSet` y añade dentro dos 
+//17 #### 17 . Crea un `WeakSet` y añade dentro dos
 // objetos diferentes (`{nombre: "A"} y {nombre: "B"}`).
 
 console.log("(17)============================================(17)");
 
+const ws = new WeakSet();
 
-const ws =new WeakSet
+const objetoA = { nombre: "Alejandro" };
+const objetoB = { nombre: "Mar" };
 
-const objetoA = {nombre: "Alejandro"};
-const objetoB = {nombre: "Mar"};
+ws.add(objetoA, objetoB);
+console.log(ws.has(objetoA, objetoB));
 
-ws.add(objetoA,objetoB);
-console.log(ws.has(objetoA,objetoB));
-
-//18 #### 18 . Crea un `Map` que relacione nombres de 
-// animales con su tipo (por ejemplo "perro" → "mamífero"), 
+//18 #### 18 . Crea un `Map` que relacione nombres de
+// animales con su tipo (por ejemplo "perro" → "mamífero"),
 // y muestra el tamaño del `Map`.
 
 console.log("(18)============================================(18)");
 
-
 const nombresAnimales = new Map();
 
-nombresAnimales.set("perro","mamifero")
-nombresAnimales.set("ballena","mamifero")
-nombresAnimales.set("gato","mamifero")
+nombresAnimales.set("perro", "mamifero");
+nombresAnimales.set("ballena", "mamifero");
+nombresAnimales.set("gato", "mamifero");
 
 console.log(nombresAnimales.get(`perro`));
 console.log(nombresAnimales.size);
 
-
-//19 #### 19 . Crea un `Map` donde las claves sean 
+//19 #### 19 . Crea un `Map` donde las claves sean
 // objetos (por ejemplo `{ id: 1 }`) y los valores sean nombres.
 
 console.log("(19)============================================(19)");
 
+const claves = new Map();
 
-const claves = new Map()
+const clave1 = { id: 1 };
+const clave2 = { id: 2 };
 
-
-const clave1 = {id: 1}
-const clave2 = {id: 2}
-
-claves.set(clave1, "Alejandro")
-claves.set(clave2, "Mar")
+claves.set(clave1, "Alejandro");
+claves.set(clave2, "Mar");
 
 console.log("Map completo :", claves);
 console.log("Map clave1: ", claves.get(clave1));
 
-
-
-
-//20 #### 20 . Usa un `WeakMap` para asociar un 
+//20 #### 20 . Usa un `WeakMap` para asociar un
 // objeto usuario con un token `"abc123"`.
 console.log("(20)============================================(20)");
 
-
 const objetito = new WeakMap();
-const usuario  = {};
+const usuario = {};
 
 objetito.set(usuario, "abc123");
 objetito.has(usuario);
 console.log(objetito.has(usuario));
-
-
 
 console.log("(21)============================================(21)");
 
 //21 #### 21 . Combina con spread los arrays `[1, 2], [3, 4] y [5, 6]`
 //  en uno solo.
 
+const array1 = [1, 2];
+const array2 = [3, 4];
+const array3 = [5, 6];
 
-const array1 = [1, 2]
-const array2 = [3, 4]
-const array3 = [5, 6]
-
-
-const copia = [...array1,...array2,...array3];
-
+const copia = [...array1, ...array2, ...array3];
 
 console.log(copia);
 
-
 console.log("(22)============================================(22)");
 
-
-//#### 22 Usa rest para extraer el primer y segundo elemento 
+//#### 22 Usa rest para extraer el primer y segundo elemento
 // de `[10, 20, 30, 40]` y guardar el resto en otra variable.
 
+const array5 = [10, 20, 30, 40];
+const [primero, segundo, ...resto] = array5;
 
-const array5 = [10, 20, 30, 40]
-const [primero, segundo,...resto] = array5
-
-console.log(primero,segundo);
+console.log(primero, segundo);
 console.log(resto);
 
 console.log("(23)============================================(23)");
 
-
-// #### 23 . Usa `flat()` sobre `[1, [2, [3, [4]]]]` 
+// #### 23 . Usa `flat()` sobre `[1, [2, [3, [4]]]]`
 // para obtener `[1, 2, 3, 4]`.
 
-const array6 = [1, [2, [3, [4]]]]
+const array6 = [1, [2, [3, [4]]]];
 console.log(array6.flat(3));
-
 
 console.log("(24)============================================(24)");
 
-
-// 24 #### 24 . Usa `flatMap()` sobre `[2, 4, 6]` 
+// 24 #### 24 . Usa `flatMap()` sobre `[2, 4, 6]`
 // para crear un nuevo array que contenga el número original y su mitad.
 
-const array10 = [2, 4, 6]
+const array10 = [2, 4, 6];
 
-const arrayNuevo = array10.flatMap(n=>[n ,n/2])
+const arrayNuevo = array10.flatMap((n) => [n, n / 2]);
 
 console.log(arrayNuevo);
 
-
 console.log("(25)============================================(25)");
 
-
-// 25 #### 25 . Crea un `Map` y recórrelo con 
+// 25 #### 25 . Crea un `Map` y recórrelo con
 // un bucle `for...of` mostrando cada `clave` y `valor`.
 
-const nuevoArray =[
-  ["a",1,3],["b",2,4],["c",3,5]
-]
-for(const [k,v] of nombresAnimales){
-  console.log(k,v);
+const nuevoArray = [
+  ["a", 1, 3],
+  ["b", 2, 4],
+  ["c", 3, 5],
+];
+for (const [k, v] of nombresAnimales) {
+  console.log(k, v);
+}
+for (const [k, v, y] of nuevoArray) {
+  console.log(k, v, y);
+}
+
+//26 #### 26 . Crea un `setInterval` que aumente
+// un contador y lo detenga automáticamente al llegar a 5.
+
+/*let contador = 0;
+const intervalo = setInterval(()=>{
+contador++;
+console.log( `${contador}`)
+
+if(contador ===5){
+  clearInterval(intervalo)
+  console.log("Intervalo detenido")
+}
+},1000);
+*/
+
+// 27 #### 27 . Crea un `setTimeout` que muestre un mensaje
+//  tras 3 segundos, y luego cancélalo antes de que se ejecute.
+
+const mensaje = setTimeout(() => {
+  console.log("Este es el mensaje");
+}, 3000);
+
+clearTimeout(mensaje);
+console.log("El contador se ha cancelado antes de ejecutarse");
+
+//28 #### 28 . Crea una función que simule añadir y eliminar 
+// un listener (usa `addEventListener` y `removeEventListener` con un click).
+
+
+
+
+function añadir(){
+  const gestionClick = () => console.log(("Click hecho"));
+  document.addEventListener("click",gestionClick)
+  setTimeout(()=>{
+    document.removeEventListener("click", gestionClick)
+    console.log("Eventlistener borrado");
+    
+  },3000)
+
+}
+//añadir()
+
+
+//#### 29 . Usa `try/catch` para capturar el error de convertir 
+// a número un texto no numérico.
+
+try{
+  let texto ="1";
+  let conversion = Number(texto)
+  if(isNaN (conversion))
+    throw new Error("No se ha podido convertir a numero")
+  console.log("Conversion exitosa")
+
+}catch(error){
+  console.log(error.message);
   
 }
-for(const [k,v,y] of nuevoArray){
-  console.log(k,v,y);
+
+//30 #### 30 . Crea una clase `ProductoError` que extienda de Error 
+// y una función `validarPrecio(precio)` que lance esa clase de error si el 
+// precio es menor que 0. Tip: En el constructor(msg) tendrás que incorporar 
+// super(msg).
+
+
+
+class ProductoError extends Error{
+  constructor(msg){
+    super(msg)
+    
+  }
+
+}
+
+function validarPrecio(precio){
+  if(precio <0){
+    throw new ProductoError ("El precio no es adecuado")
+  }
+  return { precio}
+}
+
+try{
+  validarPrecio(-3);
+} catch(error){
+  if(error instanceof ProductoError){
+    console.log((`Error del precio: ${error.message}`));
+    
+  } else{
+    console.log((`Otro error:`, error.message));
+
+  }
+}
+
+
+//31 #### 31 . Haz una función `abrirArchivo(nombre)` 
+// que lance un error si el nombre está vacío.
+
+function abrirArchivo(nombre){
+  if(!nombre){
+    throw new Error("Introduce un nombre");
+    
+  }
+  return nombre
+}
+
+try {
+  abrirArchivo();
   
+} catch (error) {
+  console.log(error.message);
+  
+  
+}
+finally{
+console.log("Proceso finalizado");
+
+}
+  
+
+
+//32 #### 32 . Crea un `try/catch` con `finally` que siempre muestre 
+// "Proceso finalizado".
+
+
+
+
+//33 .Lanza un error genérico con `throw new Error("Algo salió mal")` 
+// y captúralo para mostrar su nombre y mensaje.
+
+try{
+  throw new Error("Algo salio mal")
+}catch(error){
+  console.log("Hay un error en la obtencion de datos: ", error.name, error.message)
+
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
 
 
