@@ -495,6 +495,77 @@ try{
 
 }
 
+// #### 34 . Crea una función con `callback` que simule 
+// leer un archivo y devuelva "Leído correctamente" tras 100 ms.
+
+function enviarPeliculas(callback){
+  setTimeout(()=>{
+    callback("Leido correctamente");
+
+  },100)
+}
+
+enviarPeliculas((resultado)=>{
+  console.log(resultado);
+  
+})
+
+
+//35 #### 35 . Crea una `Promesa` que se resuelva con "Promesa lista"
+//  tras 150 ms y muéstralo con `.then`.
+
+
+const promesa = new Promise((resolve, reject)=>{
+  const promesa = true;
+
+  if(promesa){
+    setTimeout(()=>resolve("Promesa lista"),3000)
+  
+  }else{
+    reject ("No disponible")
+
+  }})
+
+  promesa
+  .then((resultado)=>console.log(resultado))
+  .catch((resultado)=>console.log(resultado))
+
+  //36 #### 36 . Crea una `Promesa` que falle con "no disponible"
+  //  y captura el error con `.catch`.
+
+
+
+  //#### 37 . Usa `async/await` para esperar a una promesa 
+  // que tarda 200 ms y muestra `"terminado"` dentro de un try/catch.
+
+  function esperar (ms){
+    return new Promise ((res)=> setTimeout(res,ms));
+
+  
+  }
+
+  async function esperando(){
+    try {
+      await esperar(1000);
+      console.log("Terminado");
+      
+    } catch (error) {
+      console.log("No ha funcionado");
+      
+      
+    }
+  }
+esperando()
+  
+
+
+  
+
+    
+      
+   
+
+  
 
 
 
