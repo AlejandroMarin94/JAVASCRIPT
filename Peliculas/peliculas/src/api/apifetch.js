@@ -19,7 +19,7 @@ export async function getMovies(container) {
     console.log("Se ha producido un error: ", error);
   }
 }
-
+/*
 export async function getDetails(idPelicula, container) {
   try {
     const response = await fetch(
@@ -36,7 +36,7 @@ export async function getDetails(idPelicula, container) {
     console.log("Error no llegan las peliculas", error);
   }
 }
-
+*/
 export async function getCast(movieId) {
   const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=ae7be434369d2443fe4989e702fb311e`);
   const data = await response.json();
