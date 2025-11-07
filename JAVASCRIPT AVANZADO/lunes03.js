@@ -1,3 +1,4 @@
+/*
 //#### 1. Crea una función pura
 // llamada descuento que reciba un precio
 // y devuelva el precio con un 10% de descuento.
@@ -372,7 +373,7 @@ if(contador ===5){
   console.log("Intervalo detenido")
 }
 },1000);
-*/
+
 
 // 27 #### 27 . Crea un `setTimeout` que muestre un mensaje
 //  tras 3 segundos, y luego cancélalo antes de que se ejecute.
@@ -384,188 +385,329 @@ const mensaje = setTimeout(() => {
 clearTimeout(mensaje);
 console.log("El contador se ha cancelado antes de ejecutarse");
 
-//28 #### 28 . Crea una función que simule añadir y eliminar 
+//28 #### 28 . Crea una función que simule añadir y eliminar
 // un listener (usa `addEventListener` y `removeEventListener` con un click).
 
-
-
-
-function añadir(){
-  const gestionClick = () => console.log(("Click hecho"));
-  document.addEventListener("click",gestionClick)
-  setTimeout(()=>{
-    document.removeEventListener("click", gestionClick)
+function añadir() {
+  const gestionClick = () => console.log("Click hecho");
+  document.addEventListener("click", gestionClick);
+  setTimeout(() => {
+    document.removeEventListener("click", gestionClick);
     console.log("Eventlistener borrado");
-    
-  },3000)
-
+  }, 3000);
 }
 //añadir()
 
-
-//#### 29 . Usa `try/catch` para capturar el error de convertir 
+//#### 29 . Usa `try/catch` para capturar el error de convertir
 // a número un texto no numérico.
 
-try{
-  let texto ="1";
-  let conversion = Number(texto)
-  if(isNaN (conversion))
-    throw new Error("No se ha podido convertir a numero")
-  console.log("Conversion exitosa")
-
-}catch(error){
+try {
+  let texto = "1";
+  let conversion = Number(texto);
+  if (isNaN(conversion)) throw new Error("No se ha podido convertir a numero");
+  console.log("Conversion exitosa");
+} catch (error) {
   console.log(error.message);
-  
 }
 
-//30 #### 30 . Crea una clase `ProductoError` que extienda de Error 
-// y una función `validarPrecio(precio)` que lance esa clase de error si el 
-// precio es menor que 0. Tip: En el constructor(msg) tendrás que incorporar 
+//30 #### 30 . Crea una clase `ProductoError` que extienda de Error
+// y una función `validarPrecio(precio)` que lance esa clase de error si el
+// precio es menor que 0. Tip: En el constructor(msg) tendrás que incorporar
 // super(msg).
 
-
-
-class ProductoError extends Error{
-  constructor(msg){
-    super(msg)
-    
+class ProductoError extends Error {
+  constructor(msg) {
+    super(msg);
   }
-
 }
 
-function validarPrecio(precio){
-  if(precio <0){
-    throw new ProductoError ("El precio no es adecuado")
+function validarPrecio(precio) {
+  if (precio < 0) {
+    throw new ProductoError("El precio no es adecuado");
   }
-  return { precio}
+  return { precio };
 }
 
-try{
+try {
   validarPrecio(-3);
-} catch(error){
-  if(error instanceof ProductoError){
-    console.log((`Error del precio: ${error.message}`));
-    
-  } else{
+} catch (error) {
+  if (error instanceof ProductoError) {
+    console.log(`Error del precio: ${error.message}`);
+  } else {
     console.log((`Otro error:`, error.message));
-
   }
 }
 
-
-//31 #### 31 . Haz una función `abrirArchivo(nombre)` 
+//31 #### 31 . Haz una función `abrirArchivo(nombre)`
 // que lance un error si el nombre está vacío.
 
-function abrirArchivo(nombre){
-  if(!nombre){
+function abrirArchivo(nombre) {
+  if (!nombre) {
     throw new Error("Introduce un nombre");
-    
   }
-  return nombre
+  return nombre;
 }
 
 try {
   abrirArchivo();
-  
 } catch (error) {
   console.log(error.message);
-  
-  
+} finally {
+  console.log("Proceso finalizado");
 }
-finally{
-console.log("Proceso finalizado");
 
-}
-  
-
-
-//32 #### 32 . Crea un `try/catch` con `finally` que siempre muestre 
+//32 #### 32 . Crea un `try/catch` con `finally` que siempre muestre
 // "Proceso finalizado".
 
-
-
-
-//33 .Lanza un error genérico con `throw new Error("Algo salió mal")` 
+//33 .Lanza un error genérico con `throw new Error("Algo salió mal")`
 // y captúralo para mostrar su nombre y mensaje.
 
-try{
-  throw new Error("Algo salio mal")
-}catch(error){
-  console.log("Hay un error en la obtencion de datos: ", error.name, error.message)
-
+try {
+  throw new Error("Algo salio mal");
+} catch (error) {
+  console.log(
+    "Hay un error en la obtencion de datos: ",
+    error.name,
+    error.message
+  );
 }
 
-// #### 34 . Crea una función con `callback` que simule 
+// #### 34 . Crea una función con `callback` que simule
 // leer un archivo y devuelva "Leído correctamente" tras 100 ms.
 
-function enviarPeliculas(callback){
-  setTimeout(()=>{
+function enviarPeliculas(callback) {
+  setTimeout(() => {
     callback("Leido correctamente");
-
-  },100)
+  }, 100);
 }
 
-enviarPeliculas((resultado)=>{
+enviarPeliculas((resultado) => {
   console.log(resultado);
-  
-})
-
+});
 
 //35 #### 35 . Crea una `Promesa` que se resuelva con "Promesa lista"
 //  tras 150 ms y muéstralo con `.then`.
 
-
-const promesa = new Promise((resolve, reject)=>{
+const promesa = new Promise((resolve, reject) => {
   const promesa = true;
 
-  if(promesa){
-    setTimeout(()=>resolve("Promesa lista"),3000)
-  
-  }else{
-    reject ("No disponible")
-
-  }})
-
-  promesa
-  .then((resultado)=>console.log(resultado))
-  .catch((resultado)=>console.log(resultado))
-
-  //36 #### 36 . Crea una `Promesa` que falle con "no disponible"
-  //  y captura el error con `.catch`.
-
-
-
-  //#### 37 . Usa `async/await` para esperar a una promesa 
-  // que tarda 200 ms y muestra `"terminado"` dentro de un try/catch.
-
-  function esperar (ms){
-    return new Promise ((res)=> setTimeout(res,ms));
-
-  
+  if (promesa) {
+    setTimeout(() => resolve("Promesa lista"), 3000);
+  } else {
+    reject("No disponible");
   }
+});
 
-  async function esperando(){
-    try {
-      await esperar(1000);
-      console.log("Terminado");
-      
-    } catch (error) {
-      console.log("No ha funcionado");
-      
-      
-    }
+promesa
+  .then((resultado) => console.log(resultado))
+  .catch((resultado) => console.log(resultado));
+
+//36 #### 36 . Crea una `Promesa` que falle con "no disponible"
+//  y captura el error con `.catch`.
+
+//#### 37 . Usa `async/await` para esperar a una promesa
+// que tarda 200 ms y muestra `"terminado"` dentro de un try/catch.
+
+function esperar(ms) {
+  return new Promise((res) => setTimeout(res, ms));
+}
+
+async function esperando() {
+  try {
+    await esperar(1000);
+    console.log("Terminado");
+  } catch (error) {
+    console.log("No ha funcionado");
   }
-esperando()
-  
+}
+esperando();
+*/
+// #### 38 . Crea un objeto llamado `persona` con las propiedades: `nombre, edad, y
+// ciudad`. Convierte el objeto a una `cadena JSON` y muéstralo por consola.
+
+console.log("(38)============================================(38)");
 
 
-  
+const personita = {
+  nombre: "Cristiano Ronaldo",
+  edad: 38,
+  ciduad: "Málaga"
+};
 
+const conversionJson = JSON.stringify(personita);
+console.log(typeof conversionJson);
+console.log(conversionJson);
+
+
+// #### 39 . Toma la cadena JSON `{"nombre":"Ana","edad":25,"ciudad":"Madrid"}`
+// y conviértela de nuevo a un objeto. Muestra el valor de nombre por consola.
+
+console.log("(40)============================================(40)");
+
+
+const cadena1 = '{"nombre":"Ana","edad":25,"ciudad":"Madrid"}';
+
+const objetoConvertido = JSON.parse(cadena1);
+console.log(objetoConvertido);
+console.log(typeof objetoConvertido);
+console.log(objetoConvertido.nombre);
+
+
+// #### 40 . Crea un array de objetos `alumnos` con tres elementos,
+// cada uno con propiedades `nombre y nota`. Convierte el array `a JSON`
+// y muéstralo. Luego, conviértelo de nuevo `a un array` y recorre los nombres
+// de los alumnos con un `for`.
+//*
+console.log("(40)============================================(40)");
+
+const alumnos = [
+  { nombre: "Lucía", nota: 8.5 },
+  { nombre: "Carlos", nota: 7.2 },
+  { nombre: "Elena", nota: 9.1 },
+];
+
+const alumnosConvertidos = JSON.stringify(alumnos);
+console.log(typeof alumnosConvertidos);
+
+const alumnosConvertidosNuevo = JSON.parse(alumnosConvertidos);
+console.log(typeof alumnosConvertidosNuevo);
+
+for (const alumno of alumnosConvertidosNuevo) {
+  console.log(alumno.nombre);
+}
+
+
+//41 #### 41 . Prueba a `convertir a JSON` un 
+// `objeto` que contenga una `función`. Observa qué ocurre 
+// con la función en la conversión.
+
+console.log("(41)============================================(41)");
+
+
+const jugador ={
+  chutar(){
+    console.log("Ha chutado el balon");
     
-      
-   
+  }
+}
 
+const jugadorConvertido = JSON.stringify(jugador);
+console.log(jugadorConvertido);
+
+// 42 #### 42 . Declara una variable `puntos` sin valor 
+// `(undefined)`. `Usa puntos ?? 0` para mostrar un valor por 
+// defecto en consola.
+
+console.log("(42)============================================(42)");
+
+
+let puntos;
+let resultado = puntos ?? 0
+
+console.log(resultado);
+
+// #### 43 . Declara `let valor = 0`. 
+// Imprime el resultado de `valor ?? 10` y explica por 
+// qué no se reemplaza por 10.
+
+console.log("(43)============================================(43)");
+
+let valor = 0;
+
+let valorNuevo = valor ?? 10;
+
+console.log("Explicacion: No se reemplaza por 10 porque 0 no es null ni undefined, Resultado:", valorNuevo);
+
+// #### 44 . Declara `let nombreUsuario = null`.
+// Usa `nombreUsuario ?? "Invitado"` para mostrar un nombre por defecto.
+
+console.log("(44)============================================(44)");
+
+let nombreUsuario = null;
+
+nombreUsuarioInvitado = nombreUsuario ?? "Usuario Invitado"
+
+console.log(nombreUsuarioInvitado);
+
+// #### 45 . Crea una función `obtenerDescuento(precio)` 
+// que devuelva precio \* 0.1, pero si precio es null o undefined, 
+// devuelva 0.
+
+console.log("(45)============================================(45)");
+
+
+const obtenerDescuento = ((precio)=>{
+  return (precio ?? 0) *0.1
   
+  
+})
+
+console.log(obtenerDescuento(10));
+console.log(obtenerDescuento());
+
+// #### 46 . Crea un objeto
+//  `libro = { titulo: "1984", autor: { nombre: "Orwell" } }`.
+//  Muestra en consola: `libro?.autor?.nombre` y 
+// `libro?.editorial?.nombre ?? "Sin editorial"`
+
+console.log("(46)============================================(46)");
+
+const libro = {
+  titulo: "1984",
+  autor: {
+    nombre: "Orwell"
+  }
+};
+
+console.log(libro?.autor?.nombre);
+console.log(libro?.editorial?.nombre ?? "Sin editorial");
+
+// #### 47 . Declara un objeto vacío {} y 
+// prueba a acceder a `obj?.datos?.valor` sin que dé error. 
+// Intenta acceder si el ? para ver que pasa.
+
+console.log("(47)============================================(47)");
+
+const objetoVacio = {}
+
+console.log(objetoVacio?.datos?.valor);
+//console.log(objetoVacio.datos.valor);//
+
+// #### 48 . Crea una variable `usuario` con el 
+// valor `null`. Usa `usuario?.nombre ?? "Usuario no registrado"` 
+// para mostrar un texto alternativo.
+
+console.log("(48)============================================(48)");
+
+
+const usuario25 = null;
+console.log(usuario25?.nombre ?? "Usuario no registrado");
+
+// 49 #### 49 . Crea una lista clientes con 
+// varios objetos que tengan estructura similar 
+// a: `{ nombre: 'Pepe', direccion: { ciudad: 'Sevilla' } }`. 
+// Usa `?.` para acceder de forma segura a la ciudad de cada cliente,
+// mostrando `"sin ciudad"` si no existe.
+
+console.log("(49)============================================(49)");
+
+
+
+const clientes = [
+  { nombre: 'Pepe', direccion: { ciudad: 'Sevilla' } },
+  { nombre: 'Laura', direccion: { ciudad: 'Granada' } },
+  { nombre: 'Javier', direccion: { ciudad: 'Córdoba' } },
+  { nombre: 'Marta' }
+];
+
+for (const cliente of clientes) {
+  console.log(cliente.direccion?.ciudad ?? "Sin ciudad");
+}
+
+
+
+
+
 
 
 
