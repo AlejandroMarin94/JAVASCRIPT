@@ -1,4 +1,4 @@
-/*
+
 CREATE DATABASE Ejercicio1;
 
 
@@ -41,7 +41,7 @@ VALUES
     ('María Rodríguez', 'maria.rodriguez@example.com', '1992-12-30', 'Calle 10 de Julio 789, Ciudad de México', '333444555', TRUE, 3),
     ('Sophie Dupont', 'sophie.dupont@example.com', '1988-07-10', 'Rue de Paris 22, París', '666888555', FALSE, 4),
     ('Luca Bianchi', 'luca.bianchi@example.com', '1995-03-25', 'Via Roma 101, Roma', '888999555', TRUE, 5);
- */   
+   
 # 1.Obtener todas las nacionalidades
 
 select (nombre_nacionalidad) from Nacionalidades;
@@ -83,3 +83,63 @@ select count(usuario_id) as usuariosCorreo from usuarios where email like "%.com
 select count(usuario_id) as usuariosNotelef from usuarios where telefono is null;
 # 13. Obtener la cantidad de usuarios que no tienen telefono O (= A OR) direccion (Resultaod -> 1)
 select count(usuario_id) as UsuarioNotelefNodireccion from usuarios where telefono is null or direccion is null;
+SET SQL_SAFE_UPDATES = 0;
+# 14. Poner teléfono NULL al usuario sin teléfono conocido pero con id concreto (id=1).
+
+update usuarios set telefono = NULL where usuario_id =1;
+
+# 15. Actualizar la dirección de “Juan Pérez” a “Calle Mayor 10, Madrid”.
+
+update usuarios set direccion = 'Calle-Mayor-10, Madrid' where nombre_usuario= 'Juan Pérez';
+select * from usuarios;
+
+# 16. Desactivar (estado_activacion = FALSE) a todos los usuarios cuya dirección contenga “París”.
+
+update usuarios set direccion = 'Paris' where estado_activacion =false;
+select * from usuarios;
+
+# 17. Cambiar el email de “Carlos García” a “carlos.garcia@midominio.com”.
+
+update usuarios set email = 'carlos.garcia@midominio.com' where nombre_usuario= 'Carlos Garcia';
+select * from usuarios;
+
+# 18. Marcar como inactivo a los usuarios sin teléfono (telefono IS NULL).
+
+update usuarios set estado_activacion= false where telefono is null;
+select * from usuarios;
+
+# 19. Añadir el prefijo “España - ” al inicio de la dirección de quienes vivan en Madrid.
+
+update usuarios set direccion = concat( "España - ", direccion) where direccion like "%Madrid%";
+select * from usuarios;
+
+# 20. Añadir el prefijo internacional +34 a teléfonos que empiecen por “6” o “7” y no lo tengan ya.
+
+update usuarios set telefono = concat("+ 34 ", telefono) where telefono like "6%" or telefono like "%7" and telefono like "+34%";
+select * from usuarios;
+
+# 21. Cambiar el dominio de todos los correos “@example.com” a “@correo.com”.
+
+update usuarios set email=replace( email, "@example.com", "@correo.com");
+ 
+# DELETE
+# 15. Eliminar usuarios con email que termine en “@spam.com”.
+
+delete from usuarios where email like "%@spam.com";
+# 16. Eliminar usuarios sin teléfono ni dirección (ambos NULL).
+
+delete from usuarios where telefono is null or direccion is null;
+# 17. Eliminar usuarios inactivos (estado_activacion = FALSE).
+
+delete from usuarios where estado_activacion= false;
+# 18. Eliminar usuarios cuya dirección contenga “Falsa”.
+
+delete from usuarios where direccion like "%falsa%";
+# 19. Eliminar usuarios nacidos antes de 01-01-1988.
+
+delete from usuarios where fecha_nacimiento < "1988-01-01";
+# 20. Eliminar usuarios sin nacionalidad asignada (nacionalidad_id IS NULL).
+
+delete from usuarios where nacionalidad_id is null;
+ 
+
