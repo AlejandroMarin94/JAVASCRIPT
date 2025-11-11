@@ -1,8 +1,5 @@
 export function createActorsGallery(castArray) {
-  /* const detailCardCuarto = document.createElement("div");
-    detailCardCuarto.className = ("detail-cuarto");
-    const cast = document.createElement("div");
-    cast.textContent ="Actores";*/
+
   const gallery = document.createElement("div");
   gallery.className = "actors-gallery";
   castArray.forEach(actor=>{
