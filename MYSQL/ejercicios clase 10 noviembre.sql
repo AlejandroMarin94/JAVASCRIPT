@@ -41,7 +41,7 @@ VALUES
     ('María Rodríguez', 'maria.rodriguez@example.com', '1992-12-30', 'Calle 10 de Julio 789, Ciudad de México', '333444555', TRUE, 3),
     ('Sophie Dupont', 'sophie.dupont@example.com', '1988-07-10', 'Rue de Paris 22, París', '666888555', FALSE, 4),
     ('Luca Bianchi', 'luca.bianchi@example.com', '1995-03-25', 'Via Roma 101, Roma', '888999555', TRUE, 5);
-   
+  /* 
 # 1.Obtener todas las nacionalidades
 
 select (nombre_nacionalidad) from Nacionalidades;
@@ -141,5 +141,143 @@ delete from usuarios where fecha_nacimiento < "1988-01-01";
 # 20. Eliminar usuarios sin nacionalidad asignada (nacionalidad_id IS NULL).
 
 delete from usuarios where nacionalidad_id is null;
- 
+*/
 
+select * from usuarios;
+select * from nacionalidades;
+ 
+ ## Crea una vista llamada vista_activos que muestre
+ ##únicamente el nombre y el email de los usuarios activos (estado_activacion = TRUE).
+ 
+ create view vista_activos as
+ select nombre_usuario, email
+ from usuarios 
+ where estado_activacion=true;
+ 
+ select * from vista_activos;
+ 
+ ## Crea una vista llamada vista_usuario_nacionalidad 
+ ##que muestre el nombre del usuario junto a su nacionalidad.
+ 
+ create view vista_usuario_nacionalidad as
+ select u.nombre_usuario, n.nombre_nacionalidad
+ from usuarios u
+ inner join nacionalidades n on u.nacionalidad_id = n.nacionalidad_id;
+ 
+ 
+ ##Crea una vista llamada vista_sin_telefono que muestre el 
+ ##nombre y email de los usuarios que no tienen teléfono (telefono IS NULL).
+ 
+ create view vista_sin_telefono as
+ select nombre_usuario, email 
+ from usuarios 
+ where telefono is null;
+ 
+ select * from vista_sin_telefono;
+ 
+ INSERT INTO Usuarios (nombre_usuario, email, fecha_nacimiento, direccion, telefono, estado_activacion, nacionalidad_id) 
+VALUES 
+    ('Juan Pérez', 'juan.perez@example.com', '1990-05-15', 'Calle Falsa 123, Madrid', null , TRUE, 1),
+    ('Carlos García', 'carlos.garcia@example.com', '1985-08-22', 'Avenida Libertador 456, Buenos Aires', '222333444', TRUE, 2),
+	('Sophie Dupont', 'sophie.dupont@example.com', '1988-07-10', 'Rue de Paris 22, París', '666888555', FALSE, 5);
+    
+ delimiter //
+ create function edad_usuario(fecha_nac date)
+ returns int 
+ deterministic
+ begin 
+ declare edad int;
+ set edad = year(curdate()) - year(fecha_nac);
+ return edad;
+ end//
+ delimiter ;
+ 
+ select nombre_usuario as name, edad_usuario(fecha_nacimiento) as Edad from usuarios;
+ 
+ ##Crea una función llamada info_usuario que 
+ ##reciba un nombre y una nacionalidad y 
+ ##devuelva un texto como 'Juan Pérez es 
+##de nacionalidad Española'.
+
+delimiter //
+create function info_usuario(nombre varchar(100), nacionalidad varchar(100))
+returns text 
+deterministic 
+begin
+return concat(nombre, " es de nacionalidad ", nacionalidad);
+end //
+delimiter ;
+
+select info_usuario(u.nombre_usuario, n.nombre_nacionalidad) from usuarios u
+inner join nacionalidades n on u.nacionalidad_id = n.nacionalidad_id;
+
+
+
+## Crea un procedimiento llamado mostrar_activos 
+##que muestre el nombre y correo de los usuarios activos.
+
+delimiter //
+create procedure mostrar_activos()
+begin
+select nombre_usuario, email
+ from usuarios 
+where estado_activacion = true;
+end //
+delimiter ;
+
+call mostrar_activos();
+
+##Crea un procedimiento llamado 
+##usuarios_por_nacionalidad que muestre 
+##cuántos usuarios tiene cada nacionalidad.
+
+delimiter //
+create procedure mostrar_nacionalidades()
+begin
+	select n.nombre_nacionalidad, count(u.nombre_usuario) as cantidad
+    from usuarios u 
+    inner join nacionalidades n on u.nacionalidad_id = n.nacionalidad_id 
+    group by n.nombre_nacionalidad;
+end //
+delimiter ;
+ 
+call mostrar_nacionalidades();
+
+
+
+###Crear un procedimiento almacenado para insertar un nuevo usuario y que devuelva el id del usuario creado.
+ 
+Delimiter //
+
+create procedure alta_usuario(
+in p_nombre varchar(50), 
+in p_email varchar(100),
+in p_fecha_nacimiento date,
+in p_direccion varchar (255),
+in p_telefono varchar(20),
+in p_estado_activacion boolean,
+in p_nacionalidad_id int,
+out p_nuevo_id int
+)
+
+Begin
+
+	insert into Usuarios(nombre_usuario, email, fecha_nacimiento, direccion, telefono, estado_activacion, nacionalidad_id) values(
+	p_nombre,
+	p_email,
+	p_fecha_nacimiento,
+	p_direccion,
+	p_telefono,
+	p_estado_activacion,
+	p_nacionalidad_id);
+set p_nuevo_id = last_insert_id();
+end //
+
+delimiter ;
+
+set @nuevo_id := null;
+call alta_usuario('alejandro','alejandro@email.es','1980-09-16','calle cilla, 1', '666666666', true, 1, @nuevo_id);
+select * from Usuarios;
+ 
+ 
+ 
