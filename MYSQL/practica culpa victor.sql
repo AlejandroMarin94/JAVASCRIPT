@@ -1,4 +1,4 @@
-create database CodeSpaceAcademy;
+/*create database CodeSpaceAcademy;*/
 
 use CodeSpaceAcademy;
 
